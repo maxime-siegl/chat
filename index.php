@@ -45,6 +45,8 @@
         </section>
     </main>
 
-    <?php include 'views/footer.php'; ?>
+    <footer class="footer_index">
+        <p>Développé par Cécile Wojnowski & Maxime Siegl</p>
+    </footer>
 </body>
 </html>
