@@ -10,22 +10,25 @@
   </head>
 
   <body>
+    <?php include 'views/header.php'; ?>
+    <main>
+      <form class="form_connexion" action="connexion.php" method="post">
+        <h1> Se connecter </h1>
+        <div class="label_input">
+          <label for="email">Adresse e-mail </label>
+          <input type="email" name="email" id="email" required>
+        </div>
 
-    <form class="form_connexion" action="connexion.php" method="post">
-      <h1> Se connecter </h1>
-      <div class="label_input">
-        <label for="email">Adresse e-mail </label>
-        <input type="email" name="email" id="email" required>
-      </div>
+        <div class="label_input">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" name="password" required>
+        </div>
 
-      <div class="label_input">
-        <label for="password">Mot de passe</label>
-        <input type="password" id="password" name="password" required>
-      </div>
+        <button type="submit" class="button_pages"> Valider </button>
+        <p>Je suis nouveau. <a href="inscription.php"> Créer un compte. </a></p>
+      </form>
+    </main>
 
-      <button type="submit" class="button_pages"> Valider </button>
-
-    </form>
-
+    <?php include 'views/footer.php'; ?>
   </body>
 </html>
