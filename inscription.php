@@ -52,7 +52,7 @@ include('classes/Utilisateur.php');
         </div>
 
         <button type="submit" class="button_pages"> Valider </button>
-        <p>Déjà membre ? <a href="inscription.php"> Se connecter. </a></p>
+        <p>Déjà membre ? <a href="connexion.php"> Se connecter. </a></p>
 
       </form>
     </main>
