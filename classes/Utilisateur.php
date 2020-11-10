@@ -1,11 +1,12 @@
 <?php
 
 class Utilisateur{
-  private $_bdd;
+  private $_bdd; // Permettra la connexion
+
   private $_id;
   private $_email;
   private $_pseudo;
-  private $_image;
+  private $_image; // Sera ajoutée à partir de la page Profil.php
   private $_password;
   private $_admin; // Booléen
 
