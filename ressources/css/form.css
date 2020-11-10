@@ -1,0 +1,11 @@
+.form_connexion{
+  background-color: #CAC5D1;
+  border-radius: 20px;
+  padding:5%;
+  width:30%;
+  margin:auto;
+}
+.label_input{
+  display: flex;
+  flex-direction: column;
+}
