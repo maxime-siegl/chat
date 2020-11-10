@@ -1,0 +1,22 @@
+LITTLE DISCORD : 
+
+	Page CHAT:
+		--> Accessible qu'au connectés
+		--> Messagerie instant sans rechargement 
+			--> Pseudo/Avatar --> date de publication --> msg
+		--> Réactions aux messages
+		--> signaler contenus
+		--> Gauches server / channel
+		--> Droite utilisateurs (menu déroulant)
+		--> admin --> creation de chan, server et supp aussi !!
+
+	Page Accueil:
+		--> présentation du chat
+		--> quelques règles
+		--> inscription / connexion
+
+	Page Admin:
+		--> Liste des utilisateurs
+		--> nb de msg
+		--> changement de statut
+		--> suppression de user
