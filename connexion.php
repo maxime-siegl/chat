@@ -1,3 +1,6 @@
+<?php include('includes/bdd.php');
+include('classes/Utilisateur.php');
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,6 +14,13 @@
 
   <body>
     <?php include 'views/header.php'; ?>
+
+    <?php
+    if(isset($_POST['email'])){
+      $utilisateur = new Utilisateur($bdd);
+      $utilisateur->seConnecter($_POST['email'], $_POST['password']);
+    }
+     ?>
     <main>
       <form class="form_connexion" action="connexion.php" method="post">
         <h1> Se connecter </h1>
