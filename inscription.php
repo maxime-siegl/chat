@@ -11,6 +11,7 @@
   <body>
 
     <form class="form_connexion" action="connexion.php" method="post">
+      <h1> Créer un compte </h1>
       <div class="label_input">
         <label for="pseudo">Adresse e-mail </label>
         <input type="text" name="pseudo" id="pseudo"  required>
@@ -31,7 +32,7 @@
         <input type="password" id="password" name="password" required>
       </div>
 
-      <button type="submit" class="button_pages"> Connexion </button>
+      <button type="submit" class="button_pages"> Valider </button>
 
     </form>
 
