@@ -1,3 +1,6 @@
+<?php include('includes/bdd.php');
+include('classes/Utilisateur.php');
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,8 +13,23 @@
 
   <body>
     <?php include 'views/header.php'; ?>
+
+    <?php
+
+    if(isset($_POST['email'])){
+      $utilisateur = new Utilisateur($bdd);
+      $password = $utilisateur->crypterPassword($_POST['password']);
+
+      $utilisateur->creerCompte(
+        $_POST['email'],
+        $_POST['pseudo'],
+        $password
+      );
+    }
+
+    ?>
     <main>
-      <form class="form_connexion" action="connexion.php" method="post">
+      <form class="form_connexion" action="inscription.php" method="post">
         <h1> Créer un compte </h1>
         <div class="label_input">
           <label for="pseudo">Pseudo </label>
@@ -30,7 +48,7 @@
 
         <div class="label_input">
           <label for="password"> Confirmer le mot de passe</label>
-          <input type="password" id="password" name="password" required>
+          <input type="password" id="password" name="confirm_password" required>
         </div>
 
         <button type="submit" class="button_pages"> Valider </button>
