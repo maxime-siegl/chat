@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3308
--- Généré le :  mar. 10 nov. 2020 à 15:43
+-- Généré le :  mar. 10 nov. 2020 à 15:59
 -- Version du serveur :  8.0.18
 -- Version de PHP :  7.3.12
 
@@ -21,6 +21,32 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `chat`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `erreurs`
+--
+
+DROP TABLE IF EXISTS `erreurs`;
+CREATE TABLE IF NOT EXISTS `erreurs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type_erreur` varchar(255) NOT NULL,
+  `message_erreur` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `erreurs`
+--
+
+INSERT INTO `erreurs` (`id`, `type_erreur`, `message_erreur`) VALUES
+(1, 'short_password', 'Votre mot de passe ne contient pas assez de caractères.'),
+(2, 'error_password', 'Vos mots de passe ne sont pas identiques.'),
+(3, 'empty_pseudo', 'Le champ pseudo est vide, veuillez le renseigner.'),
+(4, 'short_pseudo', 'Votre pseudo ne contient pas suffisamment de caractères.'),
+(5, 'format_email', 'Veuillez saisir une adresse e-mail avec le format suivant : monadresse@email.com'),
+(6, 'empty_email', 'Le champ e-mail est vide, veuillez le renseigner.');
 
 -- --------------------------------------------------------
 
