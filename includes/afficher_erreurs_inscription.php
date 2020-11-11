@@ -33,11 +33,19 @@ if(empty($_POST['email']))
   $short = "short_password";
   $erreur = new Erreur($bdd);
   $erreur->afficherErreur($short);
-  
-}elseif(strlen($_POST['pseudo']) < 8)
+
+}elseif(strlen($_POST['pseudo']) < 3)
 {
   $short = "short_pseudo";
   $erreur = new Erreur($bdd);
   $erreur->afficherErreur($short);
+}else{
+  $utilisateur = new Utilisateur($bdd);
+  $password = $utilisateur->crypterPassword($_POST['password']);
+
+  $utilisateur->creerCompte(
+    $_POST['email'],
+    $_POST['pseudo'],
+    $password);
 }
  ?>

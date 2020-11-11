@@ -21,21 +21,6 @@ include('classes/Erreur.php');
       <?php include('includes/afficher_erreurs.php'); ?>
     </div>
   <?php } ?>
-
-
-    <?php
-    /*if(!empty($_POST['email'])){
-      $utilisateur = new Utilisateur($bdd);
-      $password = $utilisateur->crypterPassword($_POST['password']);
-
-      $utilisateur->creerCompte(
-        $_POST['email'],
-        $_POST['pseudo'],
-        $password
-      );
-    }*/
-
-    ?>
     <main>
       <form class="form_connexion" action="inscription.php" method="post">
         <h1> Créer un compte </h1>
