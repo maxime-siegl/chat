@@ -39,6 +39,12 @@ if(empty($_POST['email']))
   $short = "short_pseudo";
   $erreur = new Erreur($bdd);
   $erreur->afficherErreur($short);
+}elseif(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+{
+  $format = "format_email";
+  $erreur = new Erreur($bdd);
+  $erreur->afficherErreur($format);
+
 }else{
   $utilisateur = new Utilisateur($bdd);
   $password = $utilisateur->crypterPassword($_POST['password']);

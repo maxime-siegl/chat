@@ -18,7 +18,7 @@ include('classes/Erreur.php');
 
     <?php if(isset($_POST['submit'])){ ?>
     <div class="erreur">
-      <?php include('includes/afficher_erreurs.php'); ?>
+      <?php include('includes/afficher_erreurs_inscription.php'); ?>
     </div>
   <?php } ?>
     <main>
@@ -31,7 +31,7 @@ include('classes/Erreur.php');
 
         <div class="label_input">
           <label for="email">Adresse e-mail </label>
-          <input type="email" name="email" id="email">
+          <input type="text" name="email" id="email">
         </div>
 
         <div class="label_input">
