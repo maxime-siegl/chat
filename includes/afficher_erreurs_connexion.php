@@ -1,6 +1,4 @@
 <?php
-// Votre e-mail contient une erreur ou bien il n'existe pas.
-// Votre mot de passe est incorrect.
 if(empty($_POST['email']))
 {
   $empty = "empty_email";
