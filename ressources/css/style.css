@@ -81,3 +81,8 @@ footer p{
     outline: none;
     font-weight: bold;
 }
+
+.hidden {
+  visibility: hidden;
+  min-height:50px;
+}
