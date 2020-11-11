@@ -1,5 +1,7 @@
-<?php include('includes/bdd.php');
+<?php
+include('includes/bdd.php');
 include('classes/Utilisateur.php');
+include('classes/Erreur.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,9 +16,15 @@ include('classes/Utilisateur.php');
   <body>
     <?php include 'views/header.php'; ?>
 
-    <?php
+    <?php if(isset($_POST['submit'])){ ?>
+    <div class="erreur">
+      <?php include('includes/afficher_erreurs.php'); ?>
+    </div>
+  <?php } ?>
 
-    if(isset($_POST['email'])){
+
+    <?php
+    /*if(!empty($_POST['email'])){
       $utilisateur = new Utilisateur($bdd);
       $password = $utilisateur->crypterPassword($_POST['password']);
 
@@ -25,7 +33,7 @@ include('classes/Utilisateur.php');
         $_POST['pseudo'],
         $password
       );
-    }
+    }*/
 
     ?>
     <main>
@@ -33,26 +41,26 @@ include('classes/Utilisateur.php');
         <h1> Créer un compte </h1>
         <div class="label_input">
           <label for="pseudo">Pseudo </label>
-          <input type="text" name="pseudo" id="pseudo"  required>
+          <input type="text" name="pseudo" id="pseudo">
         </div>
 
         <div class="label_input">
           <label for="email">Adresse e-mail </label>
-          <input type="email" name="email" id="email"  required>
+          <input type="email" name="email" id="email">
         </div>
 
         <div class="label_input">
           <label for="password">Mot de passe</label>
-          <input type="password" id="password" name="password"  required>
+          <input type="password" id="password" name="password">
         </div>
 
         <div class="label_input">
-          <label for="password"> Confirmer le mot de passe</label>
-          <input type="password" id="password" name="confirm_password" required>
+          <label for="confirm_password"> Confirmer le mot de passe</label>
+          <input type="password" id="password" name="confirm_password">
         </div>
 
-        <button type="submit" class="button_pages"> Valider </button>
-        <p>Déjà membre ? <a href="inscription.php"> Se connecter. </a></p>
+        <button type="submit" class="button_pages" name="submit"> Valider </button>
+        <p>Déjà membre ? <a href="connexion.php"> Se connecter. </a></p>
 
       </form>
     </main>
