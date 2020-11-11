@@ -1,3 +1,9 @@
+.erreur{
+  background-color: #D28989;
+  width:20%;
+  padding:1% 5%;
+  margin:auto;
+}
 .form_connexion{
   background-color: #CAC5D1;
   border-radius: 20px;
@@ -5,7 +11,7 @@
   width:20%;
   margin:auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-top:5%;
+  margin-top:2%;
   margin-bottom:5%;
 }
 .form_connexion h1{
