@@ -1,5 +1,5 @@
 <?php
-  include('includes/bdd.php');
+  include('ressources/php/bdd.php');
   include('classes/Utilisateur.php');
   include('classes/Erreur.php');
 ?>
@@ -19,7 +19,7 @@
 
     <?php if(isset($_POST['submit'])){ ?>
     <div class="erreur">
-      <?php include('includes/afficher_erreurs_connexion.php'); ?>
+      <?php include('ressources/php/afficher_erreurs_connexion.php'); ?>
     </div>
   <?php } ?>
     <main>

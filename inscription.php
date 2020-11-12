@@ -1,5 +1,5 @@
 <?php
-include('includes/bdd.php');
+include('ressources/php/bdd.php');
 include('classes/Utilisateur.php');
 include('classes/Erreur.php');
 ?>
@@ -12,29 +12,6 @@ include('classes/Erreur.php');
     <link rel="stylesheet" href="ressources/css/style.css">
     <link rel="stylesheet" href="ressources/css/form.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" charset="utf-8"></script>
-
-    <script type="text/javascript">
-      $(function() {
-        $(".form_connexion").submit(function(e) {
-          e.preventDefault();
-          $.ajax({
-            url: "includes/afficher_erreurs_inscription.php",
-            method: "POST",
-            data: {
-              pseudo: $("input[name=pseudo]").val(),
-              email: $("input[name=email]").val(),
-              password: $("input[name=password]").val(),
-              confirm_password: $("input[name=confirm_password]").val()
-            },
-            success: function(data) {
-              $(".erreur").removeClass("hidden");
-
-              $(".erreur").text(data);
-            }
-          })
-        })
-      })
-    </script>
 
   </head>
 
@@ -63,7 +40,7 @@ include('classes/Erreur.php');
 
         <div class="label_input">
           <label for="confirm_password"> Confirmer le mot de passe</label>
-          <input type="password" id="password" name="confirm_password">
+          <input type="password" id="confirm_password" name="confirm_password">
         </div>
 
         <button type="submit" class="button_pages" name="submit"> Valider </button>
@@ -73,4 +50,5 @@ include('classes/Erreur.php');
     </main>
     <?php include 'views/footer.php'; ?>
   </body>
+  <script src="ressources/js/inscription.js" type="text/javascript"></script>
 </html>
