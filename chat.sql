@@ -2,9 +2,9 @@
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3308
--- Généré le :  mer. 11 nov. 2020 à 18:09
--- Version du serveur :  8.0.18
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  jeu. 12 nov. 2020 à 17:16
+-- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -21,6 +21,20 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `chat`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `channels`
+--
+
+DROP TABLE IF EXISTS `channels`;
+CREATE TABLE IF NOT EXISTS `channels` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name_chan` varchar(255) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -66,6 +80,20 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `id_utilisateur` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `salons`
+--
+
+DROP TABLE IF EXISTS `salons`;
+CREATE TABLE IF NOT EXISTS `salons` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name_salon` varchar(255) NOT NULL,
+  `id_channel` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
