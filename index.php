@@ -10,7 +10,7 @@
 
     <title>Little Discord</title>
 </head>
-<body>
+<body class="page_index">
     <?php include 'views/header.php'; ?>
 
     <main>

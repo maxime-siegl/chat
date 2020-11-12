@@ -15,7 +15,7 @@ include('classes/Erreur.php');
 
   </head>
 
-  <body>
+  <body class="page_index">
     <?php include 'views/header.php'; ?>
 
     <div class="erreur hidden">

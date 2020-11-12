@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="ressources/css/form.css">
   </head>
 
-  <body>
+  <body class="page_index">
     <?php include 'views/header.php'; ?>
 
     <?php if(isset($_POST['submit'])){ ?>

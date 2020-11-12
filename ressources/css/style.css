@@ -4,11 +4,6 @@
     text-decoration: none;
 }
 
-body{
-    background-color: rgb(29, 28, 34);
-    font-family: 'Roboto', sans-serif;
-}
-
 /********** HEADER **********/
 header{
     display: flex;
@@ -39,6 +34,11 @@ footer p{
   bottom: 0;
 }
 /********** INDEX **********/
+.page_index{
+    background-color: rgb(29, 28, 34);
+    font-family: 'Roboto', sans-serif;
+}
+
 #index{
     display: flex;
     flex-direction: column;
@@ -85,4 +85,12 @@ footer p{
 .hidden {
   visibility: hidden;
   min-height:50px;
+}
+
+
+/********* CHAT *********/
+#page_chat{
+    background-image: url('img/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
