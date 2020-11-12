@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="ressources/css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" charset="utf-8"></script>
 
     <title>Little Discord</title>
 </head>
@@ -49,4 +50,5 @@
         <p>Développé par Cécile Wojnowski & Maxime Siegl</p>
     </footer>
 </body>
+<script src="ressources/js/index.js"></script>
 </html>

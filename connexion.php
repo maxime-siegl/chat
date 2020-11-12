@@ -1,6 +1,7 @@
-<?php include('includes/bdd.php');
-include('classes/Utilisateur.php');
-include('classes/Erreur.php');
+<?php
+  include('includes/bdd.php');
+  include('classes/Utilisateur.php');
+  include('classes/Erreur.php');
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,11 +1,12 @@
+<?php session_start(); ?>
 <header>
     <a id="titre" href="index.php"><h1>Little Discord</h1></a>
     <?php
         if(!isset($_SESSION) || empty($_SESSION)){
     ?>
     <section id="header_module_co">
-        <a href="#"><img src="https://img.icons8.com/nolan/45/login-rounded-right.png"/></a>
-        <a href="#"><img src="https://img.icons8.com/nolan/45/save-as.png"/></a>
+        <a href="connexion.php"><img src="https://img.icons8.com/nolan/45/login-rounded-right.png"/></a>
+        <a href="inscription.php"><img src="https://img.icons8.com/nolan/45/save-as.png"/></a>
     </section>
     <?php
         }
