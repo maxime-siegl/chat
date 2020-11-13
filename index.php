@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    include('ressources/php/bdd.php');
+    include('classes/Utilisateur.php');
+    include('classes/Erreur.php');
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

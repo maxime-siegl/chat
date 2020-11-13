@@ -40,6 +40,14 @@ if(empty($_POST['email']))
   }else{
     $utilisateur = new Utilisateur($bdd);
     $utilisateur->seConnecter($_POST['email'], $_POST['password']);
+
+    $req = $bdd->prepare("SELECT * FROM utilisateurs WHERE email = ?");
+    $req->execute([$_POST['email']]);
+    $result = $req->fetch(PDO::FETCH_ASSOC);
+
+    $_SESSION['id'] = $result['id'];
+    $_SESSION['pseudo'] = $result['pseudo'];
+    $_SESSION['email'] = $result['email'];
   }
 }
  ?>

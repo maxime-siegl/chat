@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <header>
     <a id="titre" href="index.php"><h1>Little Discord</h1></a>
     <?php
