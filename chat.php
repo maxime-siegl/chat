@@ -15,8 +15,15 @@
 
         <main id="chat">
             <section id="channels"></section>
-            <section id="messageries"></section>
-            <section id="membres"></section>
+            <section id="messageries">
+                <input type="text" name="new_message" id="new_message" placeholder="Ecrivez ici...">
+                <button id="submit">Envoyer</button>
+            </section>
+            <section id="membres">
+                <ul id="personnes">
+                    <li><h3> Membres du Salon </h3></li>
+                </ul>
+            </section>
         </main>
 
         <?php include 'views/footer.php'; ?>
