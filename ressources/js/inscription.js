@@ -1,4 +1,5 @@
 $(function() {
+  // Affichage de messages d'erreur
     $(".form_connexion").submit(function(e) {
       e.preventDefault();
       $.ajax({

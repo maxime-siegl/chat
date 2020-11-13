@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="ressources/css/style.css">
     <link rel="stylesheet" href="ressources/css/form.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" charset="utf-8"></script>
   </head>
 
   <body class="page_index">
@@ -42,4 +43,5 @@
 
     <?php include 'views/footer.php'; ?>
   </body>
+  <script src="ressources/js/connexion.js" type="text/javascript"></script>
 </html>

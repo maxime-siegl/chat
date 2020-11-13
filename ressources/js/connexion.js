@@ -1,14 +1,14 @@
 $(function() {
-
+  // On change de classe en fonction de la valeur de l'input
   $("#email").keyup(function() {
     var valeur = $(this).val();
     if(mailValide(valeur)) {
       $("#email").addClass("vert");
       $("#email").removeClass("rouge");
+
     } else {
       $("#email").addClass("rouge");
       $("#email").removeClass("vert");
-
     }
   })
 
