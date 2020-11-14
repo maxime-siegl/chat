@@ -12,9 +12,14 @@ $(function() {
           confirm_password: $("input[name=confirm_password]").val()
         },
         success: function(data) {
-          $(".erreur").removeClass("hidden");
 
-          $(".erreur").text(data);
+          if(data != "ok") {
+            $(".erreur").removeClass("hidden");
+            $(".erreur").text(data);
+          } else {
+            document.location.href = "connexion.php";
+          }
+
         }
       })
     })

@@ -1,7 +1,7 @@
 <?php
 include('bdd.php');
-include('../classes/Utilisateur.php');
-include('../classes/Erreur.php');
+include('../../classes/Utilisateur.php');
+include('../../classes/Erreur.php');
 // Empêcher d'utiliser un email déjà existant
 if(empty($_POST['email']))
 {
@@ -57,5 +57,7 @@ if(empty($_POST['email']))
     $_POST['email'],
     $_POST['pseudo'],
     $password);
+
+  echo "ok";
 }
  ?>

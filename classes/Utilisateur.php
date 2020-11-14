@@ -26,9 +26,6 @@ class Utilisateur{
     $inscription = $this->_bdd->prepare("INSERT INTO utilisateurs(email, pseudo, password) VALUES (?, ?, ?)");
     $inscription->execute([$_email, $_pseudo, $_password]);
 
-    if($inscription){
-      header("Location:connexion.php");
-    }
   }
 
     public function seConnecter($email, $password){
