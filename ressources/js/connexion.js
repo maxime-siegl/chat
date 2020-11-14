@@ -39,10 +39,9 @@ $(function()
 
   $("#password").keyup(function() {
     var valeur = $(this).val();
-    if(passwordExists(valeur)) {
+    if(valeur.length >= 8) {
       $("#password").addClass("vert");
       $("#password").removeClass("rouge");
-
     } else {
       $("#password").addClass("rouge");
       $("#password").removeClass("vert");
@@ -55,5 +54,3 @@ function mailValide(email) {
   var regex = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/g;
   return email.match(regex);
 }
-
-// Vérifier le format du mdp
