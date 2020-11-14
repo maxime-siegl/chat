@@ -2,15 +2,14 @@
 <header>
     <a id="titre" href="index.php"><h1>Little Discord</h1></a>
     <?php
-        if(!isset($_SESSION) || empty($_SESSION)){
+        if(!isset($_SESSION["utilisateur"])){
     ?>
     <section id="header_module_co">
         <a href="connexion.php"><img src="https://img.icons8.com/nolan/45/login-rounded-right.png"/></a>
         <a href="inscription.php"><img src="https://img.icons8.com/nolan/45/save-as.png"/></a>
     </section>
     <?php
-        }
-        else{
+        } else{
 
           $utilisateur = unserialize($_SESSION["utilisateur"]);
           $admin = $utilisateur->getAdmin();
@@ -26,7 +25,7 @@
         <?php
             }
         ?>
-        <a href="index.php"><img src="https://img.icons8.com/nolan/64/logout-rounded-left.png"/></a>
+        <a href="deconnexion.php"><img src="https://img.icons8.com/nolan/64/logout-rounded-left.png"/></a>
     </section>
     <?php } ?>
 </header>
