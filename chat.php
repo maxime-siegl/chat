@@ -1,3 +1,7 @@
+<?php
+include("classes/Utilisateur.php");
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>

@@ -1,3 +1,9 @@
+.vert{
+  background-color: #90DEA6;
+}
+.rouge{
+  background-color: #DE9090;
+}
 .erreur{
   background-color: #D28989;
   width:20%;

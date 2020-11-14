@@ -1,7 +1,7 @@
 <?php
 include('bdd.php');
-include('../classes/Utilisateur.php');
-include('../classes/Erreur.php');
+include('../../classes/Utilisateur.php');
+include('../../classes/Erreur.php');
 // Empêcher d'utiliser un email déjà existant
 if(empty($_POST['email']))
 {
@@ -50,12 +50,15 @@ if(empty($_POST['email']))
   $erreur->afficherErreur($format);
 
 }else{
-  $utilisateur = new Utilisateur($bdd);
+  $utilisateur = new Utilisateur();
   $password = $utilisateur->crypterPassword($_POST['password']);
 
   $utilisateur->creerCompte(
     $_POST['email'],
     $_POST['pseudo'],
-    $password);
+    $password,
+    $bdd);
+
+  echo "ok";
 }
  ?>

@@ -21,7 +21,7 @@ include('classes/Erreur.php');
     <div class="erreur hidden">
     </div>
     <main>
-      <form class="form_connexion" action="inscription.php" method="post">
+      <form class="form_connexion" action="inscription.php" id="inscription" method="post">
         <h1> Créer un compte </h1>
         <div class="label_input">
           <label for="pseudo">Pseudo </label>
@@ -50,5 +50,5 @@ include('classes/Erreur.php');
     </main>
     <?php include 'views/footer.php'; ?>
   </body>
-  <script src="ressources/js/inscription.js" type="text/javascript"></script>
+  <script src="ressources/js/formulaires.js" type="text/javascript"></script>
 </html>
