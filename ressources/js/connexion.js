@@ -1,5 +1,29 @@
 $(function()
 {
+
+  // Affichage de messages d'erreur
+    $(".form_connexion").submit(function(e) {
+      e.preventDefault();
+      $.ajax({
+        url: "ressources/php/afficher_erreurs_connexion.php",
+        method: "POST",
+        data: {
+          email: $("input[name=email]").val(),
+          password: $("input[name=password]").val(),
+        },
+        success: function(data) {
+
+          if(data != "ok") {
+            $(".erreur").removeClass("hidden");
+            $(".erreur").text(data);
+          } else {
+            document.location.href = "profil.php";
+          }
+
+        }
+      })
+    })
+
   // On change de classe en fonction de la valeur de l'input
   $("#email").keyup(function() {
     var valeur = $(this).val();

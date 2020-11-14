@@ -18,13 +18,10 @@
   <body class="page_index">
     <?php include 'views/header.php'; ?>
 
-    <?php if(isset($_POST['submit'])){ ?>
     <div class="erreur">
-      <?php include('ressources/php/afficher_erreurs_connexion.php'); ?>
     </div>
-  <?php } ?>
     <main>
-      <form class="form_connexion" action="connexion.php" method="post">
+      <form class="form_connexion" method="post">
         <h1> Se connecter </h1>
         <div class="label_input">
           <label for="email">Adresse e-mail </label>

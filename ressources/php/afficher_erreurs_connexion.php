@@ -1,45 +1,65 @@
 <?php
+include("bdd.php");
+include('../../classes/Utilisateur.php');
+include('../../classes/Erreur.php');
+session_start();
+$erreur = false;
+
+if(isset($_POST["email"]) && isset($_POST["password"])) {
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+}
+
 if(empty($_POST['email']))
 {
+  $erreur = true;
+
   $empty = "empty_email";
   $erreur = new Erreur($bdd);
   $erreur->afficherErreur($empty);
-}elseif(empty($_POST['password']))
+}
+
+if(empty($_POST['password']) && !$erreur)
 {
+  $erreur = true;
+
   $empty = "empty_password";
   $erreur = new Erreur($bdd);
   $erreur->afficherErreur($empty);
-}elseif(isset($_POST['email']))
-{
-  $email = $_POST['email'];
-  $get_email = $bdd->prepare("SELECT * FROM utilisateurs WHERE email = '$email' ");
-  $get_email->execute();
-  $resultat = $get_email->fetch();
+}
 
-  if(!$resultat)
+if(isset($_POST['email']) && !$erreur)
+{
+  $get_email = $bdd->prepare("SELECT COUNT(*) FROM utilisateurs WHERE email = '$email' ");
+  $get_email->execute();
+  $resultat = $get_email->fetchColumn();
+
+  if($resultat == 0)
   {
+    $erreur = true;
+
     $unknown = "unknown_email";
     $erreur = new Erreur($bdd);
     $erreur->afficherErreur($unknown);
-  }else{
-    $utilisateur = new Utilisateur($bdd);
-    $utilisateur->seConnecter($_POST['email'], $_POST['password']);
   }
-}elseif(isset($_POST['password']))
-{
-  $password = $_POST['password'];
-  $get_password = $bdd->prepare("SELECT * FROM utilisateurs WHERE password = '$password' ");
-  $get_password->execute();
-  $resultat = $get_password->fetch();
+}
 
-  if(!$resultat)
-  {
+if(!$erreur) {
+
+  $utilisateur = new Utilisateur();
+
+  if($utilisateur->seConnecter($email, $password, $bdd)) {
+
+    $_SESSION["utilisateur"] = serialize($utilisateur);
+    echo "ok";
+
+  } else {
+
     $wrong = "wrong_password";
     $erreur = new Erreur($bdd);
     $erreur->afficherErreur($wrong);
-  }else{
-    $utilisateur = new Utilisateur($bdd);
-    $utilisateur->seConnecter($_POST['email'], $_POST['password']);
+
   }
+
 }
  ?>

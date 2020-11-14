@@ -19,7 +19,6 @@ $(function() {
           } else {
             document.location.href = "connexion.php";
           }
-
         }
       })
     })
