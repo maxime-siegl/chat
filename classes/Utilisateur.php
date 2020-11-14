@@ -14,6 +14,14 @@ class Utilisateur{
     return $this->_password = $password;
   }
 
+  public function getAdmin() {
+    return $this->_admin;
+  }
+
+  public function getPseudo() {
+    return $this->_pseudo;
+  }
+
   public function creerCompte($_email, $_pseudo, $_password, $bdd){
     // Récupère les infos entrées dans le formulaire
     // Et les insère dans la bdd pour créer un utilisateur
