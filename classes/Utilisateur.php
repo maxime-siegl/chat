@@ -14,12 +14,46 @@ class Utilisateur{
     return $this->_password = $password;
   }
 
-  public function getAdmin() {
-    return $this->_admin;
+  public function getEmail() {
+    return $this->_email;
   }
 
   public function getPseudo() {
     return $this->_pseudo;
+  }
+
+
+  public function getImage() {
+    return $this->_image;
+  }
+
+  public function getPassword() {
+    return $this->_Password;
+  }
+
+  public function getAdmin() {
+    return $this->_admin;
+  }
+
+  public function setEmail($val) {
+    $this->_email = $val;
+  }
+
+  public function setPseudo($val) {
+    $this->_pseudo = $val;
+  }
+
+
+  public function setImage($val) {
+    $this->_image = $val;
+  }
+
+  public function setPassword($val) {
+    $this->_Password = $val;
+  }
+
+  public function setAdmin($val) {
+    $this->_admin = $val;
   }
 
   public function creerCompte($_email, $_pseudo, $_password, $bdd){
@@ -44,10 +78,6 @@ class Utilisateur{
     }
   }
 
-  public function seDeconnecter(){
-
-  }
-
   public function modifierInfos(){
     // Sera utilisée sur la page profil.php
   }
@@ -58,6 +88,7 @@ class Utilisateur{
       $this->_email = $donnees['email'];
       $this->_pseudo = $donnees['pseudo'];
       $this->_password = $donnees['password'];
+      $this->_image = $donnees['image'];
       $this->_admin = $donnees['admin'];
   }
 
