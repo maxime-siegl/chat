@@ -50,13 +50,14 @@ if(empty($_POST['email']))
   $erreur->afficherErreur($format);
 
 }else{
-  $utilisateur = new Utilisateur($bdd);
+  $utilisateur = new Utilisateur();
   $password = $utilisateur->crypterPassword($_POST['password']);
 
   $utilisateur->creerCompte(
     $_POST['email'],
     $_POST['pseudo'],
-    $password);
+    $password,
+    $bdd);
 
   echo "ok";
 }
