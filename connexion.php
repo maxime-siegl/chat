@@ -21,7 +21,7 @@
     <div class="erreur hidden">
     </div>
     <main>
-      <form class="form_connexion" method="post">
+      <form class="form_connexion" method="post" id="connexion">
         <h1> Se connecter </h1>
         <div class="label_input">
           <label for="email">Adresse e-mail </label>
@@ -40,5 +40,5 @@
 
     <?php include 'views/footer.php'; ?>
   </body>
-  <script src="ressources/js/connexion.js" type="text/javascript"></script>
+  <script src="ressources/js/formulaires.js" type="text/javascript"></script>
 </html>
