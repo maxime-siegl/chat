@@ -18,7 +18,7 @@
   <body class="page_index">
     <?php include 'views/header.php'; ?>
 
-    <div class="erreur">
+    <div class="erreur hidden">
     </div>
     <main>
       <form class="form_connexion" method="post">
