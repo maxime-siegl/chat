@@ -24,17 +24,22 @@
         ?>
 
         <main id="chat">
-            <section id="channels">
-                <h3>Salon</h3>
-            </section>
-            <section id="messageries">
-                <input type="text" name="new_message" id="new_message" placeholder="Ecrivez ici...">
-                <button id="submit">Envoyer</button>
-            </section>
-            <section id="membres">
-                <ul id="personnes">
-                    <li><h3> Membres du Salon </h3></li>
-                </ul>
+            <section id="corps_discord">
+                <section id="channels">
+                    <h3>Salon</h3>
+                    <ul id="salon">
+                        <ul id="chan"></ul>
+                    </ul>
+                </section>
+                <section id="messageries">
+                    <input type="text" name="new_message" id="new_message" placeholder="Ecrivez ici...">
+                    <button id="submit">Envoyer</button>
+                </section>
+                <section id="membres">
+                    <ul id="personnes">
+                        <li><h3> Membres du Salon </h3></li>
+                    </ul>
+                </section>
             </section>
         </main>
 
