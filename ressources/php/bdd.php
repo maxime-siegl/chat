@@ -1,7 +1,7 @@
 <?php
 try
 {
-  $bdd = new PDO('mysql:host=localhost; port=3306; dbname=chat', 'root', '');
+  $bdd = new PDO('mysql:host=localhost; port=3308; dbname=chat', 'root', '');
 
   $bdd->exec("SET CHARACTER SET utf8");
 
