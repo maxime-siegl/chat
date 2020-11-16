@@ -19,29 +19,29 @@
    </head>
 
    <body class="page_index">
-     <?php include 'views/header.php'; ?>*
+     <?php include 'views/header.php'; ?>
 
      <main class="img_main">
        <div class="erreur hidden">
        </div>
          <form class="form_profil" action="profil.php" id="profil" method="post">
            <h1> Mes informations </h1>
-           <div class="label_input">
+           <div class="label_input_profil">
              <label for="pseudo">Pseudo </label>
              <input type="text" name="pseudo" id="pseudo">
            </div>
 
-           <div class="label_input">
+           <div class="label_input_profil">
              <label for="email">Adresse e-mail </label>
              <input type="text" name="email" id="email">
            </div>
 
-           <div class="label_input">
+           <div class="label_input_profil">
              <label for="password">Mot de passe</label>
              <input type="password" id="password" name="password">
            </div>
 
-           <div class="label_input">
+           <div class="label_input_profil">
              <label for="confirm_password"> Confirmer le mot de passe</label>
              <input type="password" id="confirm_password" name="confirm_password">
            </div>
