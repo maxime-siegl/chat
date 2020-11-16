@@ -128,3 +128,10 @@
   color: #CBC1D6;
   margin-bottom: 2%;
 }
+
+.img_profil img{
+  margin: 5% auto;
+  display: block;
+  width:40%;
+  border-radius: 50%;
+}
