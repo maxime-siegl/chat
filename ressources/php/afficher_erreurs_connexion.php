@@ -58,7 +58,6 @@ if(!$erreur) {
     $wrong = "wrong_password";
     $erreur = new Erreur($bdd);
     $erreur->afficherErreur($wrong);
-
   }
 
 }

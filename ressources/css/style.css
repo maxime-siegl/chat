@@ -90,7 +90,15 @@ footer p{
 
 /********* CHAT *********/
 #page_chat{
-    background-image: url('img/background.jpg');
-    background-size: cover;
+    background-color: rgb(29, 28, 34);
+}
+
+#chat{
+    background-image: url('../../img/background.jpg');
     background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#corps_discord{
+    background-color: rgba(29, 28, 34, 0.63);
 }

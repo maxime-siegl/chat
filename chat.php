@@ -1,7 +1,9 @@
 <?php
-include("classes/Utilisateur.php");
+    session_start();
+    include('ressources/php/bdd.php');
+    include('classes/Utilisateur.php');
+    include('classes/Erreur.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -17,11 +19,36 @@ include("classes/Utilisateur.php");
     <body id="page_chat">
         <?php include 'views/header.php'; ?>
 
+        <?php
+            // if(isset($_SESSION['pseudo']) || isset($_SESSION['id']) || !empty($_SESSION)){
+        ?>
+
         <main id="chat">
-            <section id="channels"></section>
-            <section id="messageries"></section>
-            <section id="membres"></section>
+            <section id="corps_discord">
+                <section id="channels">
+                    <h3>Salon</h3>
+                    <ul id="salon">
+                        <ul id="chan"></ul>
+                    </ul>
+                </section>
+                <section id="messageries">
+                    <input type="text" name="new_message" id="new_message" placeholder="Ecrivez ici...">
+                    <button id="submit">Envoyer</button>
+                </section>
+                <section id="membres">
+                    <ul id="personnes">
+                        <li><h3> Membres du Salon </h3></li>
+                    </ul>
+                </section>
+            </section>
         </main>
+
+        <?php
+            // }
+            // else{
+            //     // header('location:connexion.php');
+            // }
+        ?>
 
         <?php include 'views/footer.php'; ?>
     </body>
