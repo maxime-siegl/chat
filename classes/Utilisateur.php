@@ -14,6 +14,10 @@ class Utilisateur{
     return $this->_password = $password;
   }
 
+  public function getId(){
+    return $this->_id;
+  }
+
   public function getEmail() {
     return $this->_email;
   }
@@ -78,9 +82,45 @@ class Utilisateur{
     }
   }
 
-  public function modifierInfos(){
-    // Sera utilisée sur la page profil.php
+  public function modifierImage($image, $bdd){
+    $update_image = $bdd->prepare("UPDATE utilisateurs SET image = ? WHERE id = ?");
+    $update_image->execute([$image, $_SESSION['id']]);
+    $_SESSION['image'] = $image;
   }
+  public function modifierPseudo($new_pseudo, $bdd){
+    $query = $bdd->prepare("SELECT * FROM utilisateurs WHERE pseudo = ?");
+    $query->execute([$new_pseudo]);
+    $result = $query->fetch();
+    if(empty($result)){
+      $update_pseudo = $bdd->prepare("UPDATE utilisateurs SET pseudo = ? WHERE id = ?");
+      $update_pseudo->execute([$new_pseudo, $this->_id]);
+      $this->_pseudo = $new_pseudo;
+      }
+      else
+      {
+        echo "Ce pseudo est déjà utilisé.";
+      }
+  }
+  public function modifierPassword($new_password, $bdd){
+    # Attention : le nouveau mdp doit aussi être crypté !
+      $update_password = $bdd->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
+      $update_password->execute([$new_password, $_SESSION['id']]);
+    }
+  public function modifierEmail($new_email, $bdd){
+    $query = $bdd->prepare("SELECT * FROM utilisateurs WHERE email = ?");
+    $query->execute([$new_email]);
+    $result = $query->fetch();
+    if(empty($result)){
+      $update_email = $bdd->prepare("UPDATE utilisateurs SET email = ? WHERE id = ?");
+      $update_email->execute([$new_email, $_SESSION['id']]);
+      $_SESSION['email'] = $new_email;
+      }
+      else
+      {
+        echo "Cet email est déjà utilisé.";
+      }
+  }
+
 
   public function hydrater(array $donnees)
     {
