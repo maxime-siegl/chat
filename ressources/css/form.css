@@ -118,14 +118,13 @@
   border:none;
   border-bottom: 1px solid grey;
   background-color: #1D1C22;
-  color:white;
-  opacity:0.7;
+  color:lightgrey;
 }
 .label_input_profil input:focus{
   outline: none;
 }
 .label_input_profil label{
   font-size: 12px;
-  color:#827B89;
+  color: #CBC1D6;
   margin-bottom: 2%;
 }
