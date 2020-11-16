@@ -19,13 +19,19 @@
    </head>
 
    <body class="page_index">
-     <?php include 'views/header.php'; ?>
+    <?php
+      include 'views/header.php';
+      include("ressources/php/modifier_profil.php");
+      ?>
 
      <main class="img_main">
        <div class="erreur hidden">
        </div>
          <form class="form_profil" action="profil.php" id="profil" method="post">
            <h1> Mes informations </h1>
+           <div class="img_profil">
+             <img src="img/talin.jpg" alt="Photo de profil">
+           </div>
            <div class="label_input_profil">
              <label for="pseudo">Pseudo </label>
              <input type="text" name="pseudo" id="pseudo" placeholder="<?= $utilisateur->getPseudo(); ?>">

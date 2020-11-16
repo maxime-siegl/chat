@@ -13,7 +13,7 @@ class Utilisateur{
     $password = password_hash($_password, PASSWORD_BCRYPT);
     return $this->_password = $password;
   }
-
+/************* Getters **********/
   public function getId(){
     return $this->_id;
   }
@@ -26,7 +26,6 @@ class Utilisateur{
     return $this->_pseudo;
   }
 
-
   public function getImage() {
     return $this->_image;
   }
@@ -38,7 +37,7 @@ class Utilisateur{
   public function getAdmin() {
     return $this->_admin;
   }
-
+/********* Setters ************/
   public function setEmail($val) {
     $this->_email = $val;
   }
@@ -46,7 +45,6 @@ class Utilisateur{
   public function setPseudo($val) {
     $this->_pseudo = $val;
   }
-
 
   public function setImage($val) {
     $this->_image = $val;
@@ -61,12 +59,8 @@ class Utilisateur{
   }
 
   public function creerCompte($_email, $_pseudo, $_password, $bdd){
-    // Récupère les infos entrées dans le formulaire
-    // Et les insère dans la bdd pour créer un utilisateur
-
     $inscription = $bdd->prepare("INSERT INTO utilisateurs(email, pseudo, password) VALUES (?, ?, ?)");
     $inscription->execute([$_email, $_pseudo, $_password]);
-
   }
 
   public function seConnecter($email, $password, $bdd){
@@ -87,6 +81,7 @@ class Utilisateur{
     $update_image->execute([$image, $_SESSION['id']]);
     $_SESSION['image'] = $image;
   }
+
   public function modifierPseudo($new_pseudo, $bdd){
     $query = $bdd->prepare("SELECT * FROM utilisateurs WHERE pseudo = ?");
     $query->execute([$new_pseudo]);
