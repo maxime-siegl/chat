@@ -74,7 +74,7 @@
   background-size: contain;
   background-position: center;
   background-color: #000518;
-
+  padding-bottom:3%;
 }
 .form_profil{
   background-color: #1D1C22;
@@ -114,10 +114,12 @@
 }
 
 .label_input_profil input{
-  padding:5%;
+  padding:5% 0;
   border:none;
   border-bottom: 1px solid grey;
   background-color: #1D1C22;
+  color:white;
+  opacity:0.7;
 }
 .label_input_profil input:focus{
   outline: none;

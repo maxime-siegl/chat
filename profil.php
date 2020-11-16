@@ -28,12 +28,12 @@
            <h1> Mes informations </h1>
            <div class="label_input_profil">
              <label for="pseudo">Pseudo </label>
-             <input type="text" name="pseudo" id="pseudo">
+             <input type="text" name="pseudo" id="pseudo" placeholder="<?= $utilisateur->getPseudo(); ?>">
            </div>
 
            <div class="label_input_profil">
              <label for="email">Adresse e-mail </label>
-             <input type="text" name="email" id="email">
+             <input type="text" name="email" id="email" placeholder="<?= $utilisateur->getEmail(); ?>">
            </div>
 
            <div class="label_input_profil">

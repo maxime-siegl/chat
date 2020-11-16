@@ -28,7 +28,7 @@ class Utilisateur{
   }
 
   public function getPassword() {
-    return $this->_Password;
+    return $this->_password;
   }
 
   public function getAdmin() {
