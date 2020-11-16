@@ -66,3 +66,44 @@
 .form_connexion button:hover{
   cursor: pointer;
 }
+
+/************* Profil ************/
+.img_main{
+  background-image: url("../../img/background2.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: #000518;
+
+}
+.form_profil{
+  background-color: #1D1C22;
+  border-radius: 20px;
+  padding:5%;
+  width:20%;
+  margin:auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top:2%;
+  margin-bottom:5%;
+}
+
+.form_profil h1{
+  font-size:20px;
+  text-align: center;
+  margin-bottom: 5%;
+  color:#8628F1;
+}
+
+.form_profil button{
+  display: block;
+  margin:auto;
+  color:white;
+  border:none;
+  padding: 5% 10%;
+  border-radius:8px;
+  background-color: #A963F9;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.form_profil button:hover{
+  cursor: pointer;
+}
