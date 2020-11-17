@@ -90,15 +90,13 @@ class Utilisateur{
       $update_pseudo = $bdd->prepare("UPDATE utilisateurs SET pseudo = ? WHERE id = ?");
       $update_pseudo->execute([$new_pseudo, $this->_id]);
       $this->_pseudo = $new_pseudo;
-      }
-      else
-      {
+      } else {
         echo "Ce pseudo est déjà utilisé.";
       }
   }
 
   public function modifierPassword($new_password, $bdd){
-    $password = $this->crypterPassword($new_password); 
+    $password = $this->crypterPassword($new_password);
     echo $password;
     $update_password = $bdd->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
     $update_password->execute([$password, $this->_id]);
@@ -112,9 +110,7 @@ class Utilisateur{
       $update_email = $bdd->prepare("UPDATE utilisateurs SET email = ? WHERE id = ?");
       $update_email->execute([$new_email, $this->_id]);
       $this->_email = $new_email;
-      }
-      else
-      {
+      } else {
         echo "Cet email est déjà utilisé.";
       }
   }
