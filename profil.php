@@ -35,6 +35,7 @@
            <h1> Mes informations </h1>
            <div class="img_profil">
              <img src="img/talin.jpg" alt="Photo de profil">
+             <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
            </div>
            <div class="label_input_profil">
              <label for="pseudo">Pseudo </label>
