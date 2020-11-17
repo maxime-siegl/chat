@@ -24,7 +24,7 @@
         <?php
             }
         ?>
-        <a href="deconnexion.php"><img src="https://img.icons8.com/nolan/64/logout-rounded-left.png"/></a>
+        <a href="deconnexion.php"><img src="https://img.icons8.com/nolan/45/logout-rounded-left.png"/></a>
     </section>
     <?php } ?>
 </header>
