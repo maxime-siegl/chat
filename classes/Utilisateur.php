@@ -78,8 +78,8 @@ class Utilisateur{
 
   public function modifierImage($image, $bdd){
     $update_image = $bdd->prepare("UPDATE utilisateurs SET image = ? WHERE id = ?");
-    $update_image->execute([$image, $_SESSION['id']]);
-    $_SESSION['image'] = $image;
+    $update_image->execute([$image, $this->_id]);
+    $this->_image = $image;
   }
 
   public function modifierPseudo($new_pseudo, $bdd){
@@ -96,19 +96,21 @@ class Utilisateur{
         echo "Ce pseudo est déjà utilisé.";
       }
   }
+
   public function modifierPassword($new_password, $bdd){
     # Attention : le nouveau mdp doit aussi être crypté !
       $update_password = $bdd->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
-      $update_password->execute([$new_password, $_SESSION['id']]);
+      $update_password->execute([$new_password, $this->_id]);
     }
+
   public function modifierEmail($new_email, $bdd){
     $query = $bdd->prepare("SELECT * FROM utilisateurs WHERE email = ?");
     $query->execute([$new_email]);
     $result = $query->fetch();
     if(empty($result)){
       $update_email = $bdd->prepare("UPDATE utilisateurs SET email = ? WHERE id = ?");
-      $update_email->execute([$new_email, $_SESSION['id']]);
-      $_SESSION['email'] = $new_email;
+      $update_email->execute([$new_email, $this->_id]);
+      $this->_email = $new_email;
       }
       else
       {
