@@ -5,6 +5,10 @@
     include('ressources/php/bdd.php');
     include('classes/Utilisateur.php');
     include('classes/Erreur.php');
+
+    if(!isset($_SESSION['utilisateur'])){
+      header("Location:index.php");
+    }
  ?>
  <!DOCTYPE html>
  <html>
