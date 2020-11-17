@@ -98,10 +98,11 @@ class Utilisateur{
   }
 
   public function modifierPassword($new_password, $bdd){
-    # Attention : le nouveau mdp doit aussi être crypté !
-      $update_password = $bdd->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
-      $update_password->execute([$new_password, $this->_id]);
-    }
+    $password = $this->crypterPassword($new_password); 
+    echo $password;
+    $update_password = $bdd->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
+    $update_password->execute([$password, $this->_id]);
+  }
 
   public function modifierEmail($new_email, $bdd){
     $query = $bdd->prepare("SELECT * FROM utilisateurs WHERE email = ?");

@@ -26,4 +26,9 @@ if(isset($_POST['email'])){
   $_SESSION["utilisateur"] = serialize($utilisateur);
 }
 
+if(isset($_POST['confirm_password'])){
+  $utilisateur->modifierPassword($_POST['confirm_password'], $bdd);
+  $_SESSION["utilisateur"] = serialize($utilisateur);
+}
+
 ?>
