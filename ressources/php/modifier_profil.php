@@ -1,16 +1,18 @@
 <?php
 $utilisateur = unserialize($_SESSION["utilisateur"]);
 
-if(isset($_POST['pseudo'])){
+if(isset($_POST['pseudo']) && !empty($_POST['pseudo'])){
   $utilisateur->modifierPseudo($_POST['pseudo'], $bdd);
   $_SESSION["utilisateur"] = serialize($utilisateur);
 }
 
 
-if(isset($_FILES['avatar'])){
+if(isset($_FILES['avatar']) && !empty($_FILES['avatar'])){
+
   $uploaddir = 'img/';
   $uploadfile = $uploaddir . basename($_FILES['avatar']['name']);
-  if(move_uploaded_file($_FILES["avatar"]["name"], $uploadfile)){
+
+  if(move_uploaded_file($_FILES["avatar"]["tmp_name"], $uploadfile)){
     echo "success";
   }else{
     echo "fail";
@@ -21,12 +23,12 @@ if(isset($_FILES['avatar'])){
   $_SESSION["utilisateur"] = serialize($utilisateur);
 }
 
-if(isset($_POST['email'])){
+if(isset($_POST['email']) && !empty($_POST['email'])){
   $utilisateur->modifierEmail($_POST['email'], $bdd);
   $_SESSION["utilisateur"] = serialize($utilisateur);
 }
 
-if(isset($_POST['confirm_password'])){
+if(isset($_POST['confirm_password']) && !empty($_POST['confirm_password'])){
   $utilisateur->modifierPassword($_POST['confirm_password'], $bdd);
   $_SESSION["utilisateur"] = serialize($utilisateur);
 }

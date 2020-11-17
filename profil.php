@@ -31,11 +31,11 @@
      <main class="img_main">
        <div class="erreur hidden">
        </div>
-         <form class="form_profil" action="profil.php" id="profil" method="post">
+         <form class="form_profil" action="profil.php" id="profil" method="post" enctype="multipart/form-data">
            <h1> Mes informations </h1>
            <div class="img_profil">
-             <img src="img/talin.jpg" alt="Photo de profil">
-             <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+             <img src="<?= $utilisateur->getImage(); ?>" alt="Photo de profil">
+             <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" value="">
            </div>
            <div class="label_input_profil">
              <label for="pseudo">Pseudo </label>
