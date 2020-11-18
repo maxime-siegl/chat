@@ -75,23 +75,30 @@ $(function() {
     $("#pseudo").keyup(function() {
       var valeur = $(this).val();
       if(valeur.length >= 3) {
+
         $("#pseudo").addClass("vert");
         $("#pseudo").removeClass("rouge");
+        $("#pseudo").css('border-bottom', "1px solid #90DEA6");
+
       } else {
         $("#pseudo").addClass("rouge");
         $("#pseudo").removeClass("vert");
+        $("#pseudo").css('border-bottom', "1px solid #DE9090");
       }
     })
 
     $("#email").keyup(function() {
       var valeur = $(this).val();
       if(mailValide(valeur)) {
+
         $("#email").addClass("vert");
         $("#email").removeClass("rouge");
+        $("#email").css('border-bottom', "1px solid #90DEA6");
 
       } else {
         $("#email").addClass("rouge");
         $("#email").removeClass("vert");
+        $("#email").css('border-bottom', "1px solid #DE9090");
       }
     }),
 
@@ -100,9 +107,11 @@ $(function() {
       if(valeur.length >= 8) {
         $("#password").addClass("vert");
         $("#password").removeClass("rouge");
+        $("#password").css('border-bottom', "1px solid #90DEA6");
       } else {
         $("#password").addClass("rouge");
         $("#password").removeClass("vert");
+        $("#password").css('border-bottom', "1px solid #DE9090");
       }
     })
 
@@ -112,9 +121,11 @@ $(function() {
       if(valeur == ref) {
         $("#confirm_password").addClass("vert");
         $("#confirm_password").removeClass("rouge");
+        $("#confirm_password").css('border-bottom', "1px solid #90DEA6");
       } else {
         $("#confirm_password").addClass("rouge");
         $("#confirm_password").removeClass("vert");
+        $("#confirm_password").css('border-bottom', "1px solid #DE9090");
       }
     })
   })
