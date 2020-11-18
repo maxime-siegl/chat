@@ -1,4 +1,7 @@
 <?php
+include("bdd.php");
+include('../../classes/Utilisateur.php');
+session_start();
 $utilisateur = unserialize($_SESSION["utilisateur"]);
 
 if(isset($_POST['pseudo']) && !empty($_POST['pseudo'])){
@@ -19,7 +22,6 @@ if(isset($_FILES['avatar']) && !empty($_FILES['avatar'])){
   }
 
   $utilisateur->modifierImage($_FILES['avatar']['name'], $bdd);
-  var_dump($utilisateur);
   $_SESSION["utilisateur"] = serialize($utilisateur);
 }
 

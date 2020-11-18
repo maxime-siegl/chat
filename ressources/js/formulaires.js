@@ -46,6 +46,31 @@ $(function() {
         })
       })
 
+      // Modification du profil
+        $("#profil").submit(function(e) {
+          e.preventDefault();
+          $.ajax({
+            url: "ressources/php/modifier_profil.php",
+            method: "POST",
+            data: {
+              image: $("input[name=avatar]").val(),
+              pseudo: $("input[name=pseudo]").val(),
+              email: $("input[name=email]").val(),
+              confirm_password: $("input[name=confirm_password]").val()
+            },
+            success: function(data) {
+
+              if(data != "") {
+                $(".erreur").removeClass("hidden");
+                $(".erreur").text(data);
+              } else {
+                document.location.href = "profil.php";
+              }
+
+            }
+          })
+        })
+
     // On change de classe en fonction de la valeur de l'input
     $("#pseudo").keyup(function() {
       var valeur = $(this).val();

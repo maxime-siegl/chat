@@ -97,7 +97,6 @@ class Utilisateur{
 
   public function modifierPassword($new_password, $bdd){
     $password = $this->crypterPassword($new_password);
-    echo $password;
     $update_password = $bdd->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
     $update_password->execute([$password, $this->_id]);
   }
