@@ -5,7 +5,7 @@ class Utilisateur{
   private $_id;
   private $_email;
   private $_pseudo;
-  private $_image; // Sera ajoutée à partir de la page Profil.php
+  private $_image = "basic.png"; // Sera ajoutée à partir de la page Profil.php
   private $_password;
   private $_admin; // Booléen
 
@@ -59,8 +59,8 @@ class Utilisateur{
   }
 
   public function creerCompte($_email, $_pseudo, $_password, $bdd){
-    $inscription = $bdd->prepare("INSERT INTO utilisateurs(email, pseudo, password) VALUES (?, ?, ?)");
-    $inscription->execute([$_email, $_pseudo, $_password]);
+    $inscription = $bdd->prepare("INSERT INTO utilisateurs(email, pseudo, password, image) VALUES (?, ?, ?, ?)");
+    $inscription->execute([$_email, $_pseudo, $_password, $this->_image]);
   }
 
   public function seConnecter($email, $password, $bdd){
