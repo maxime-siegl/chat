@@ -47,6 +47,17 @@ $(function() {
       })
 
     // On change de classe en fonction de la valeur de l'input
+    $("#pseudo").keyup(function() {
+      var valeur = $(this).val();
+      if(valeur.length >= 3) {
+        $("#pseudo").addClass("vert");
+        $("#pseudo").removeClass("rouge");
+      } else {
+        $("#pseudo").addClass("rouge");
+        $("#pseudo").removeClass("vert");
+      }
+    })
+
     $("#email").keyup(function() {
       var valeur = $(this).val();
       if(mailValide(valeur)) {
