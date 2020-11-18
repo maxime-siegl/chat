@@ -35,7 +35,7 @@
            <h1> Mes informations </h1>
            <div class="img_profil">
              <img src="img/<?= $utilisateur->getImage(); ?>" alt="Photo de profil">
-             <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" value="">
+             <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" value="" style='color:lightgrey'>
            </div>
            <div class="label_input_profil">
              <label for="pseudo">Pseudo </label>
