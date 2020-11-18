@@ -80,6 +80,12 @@ $(function() {
         $("#pseudo").removeClass("rouge");
         $("#pseudo").css('border-bottom', "1px solid #90DEA6");
 
+
+      } else if(valeur.length == 0){ // Lorsque le champ est vide, on rétablit la couleur d'origine
+        $("#pseudo").blur(function(){
+        $("#pseudo").css('border-bottom', "1px solid grey");
+      })
+
       } else {
         $("#pseudo").addClass("rouge");
         $("#pseudo").removeClass("vert");
@@ -95,6 +101,11 @@ $(function() {
         $("#email").removeClass("rouge");
         $("#email").css('border-bottom', "1px solid #90DEA6");
 
+      } else if(valeur.length == 0){
+        $("#email").blur(function(){
+        $("#email").css('border-bottom', "1px solid grey");
+      })
+
       } else {
         $("#email").addClass("rouge");
         $("#email").removeClass("vert");
@@ -108,6 +119,10 @@ $(function() {
         $("#password").addClass("vert");
         $("#password").removeClass("rouge");
         $("#password").css('border-bottom', "1px solid #90DEA6");
+      } else if(valeur.length == 0){
+        $("#password").blur(function(){
+        $("#password").css('border-bottom', "1px solid grey");
+      })
       } else {
         $("#password").addClass("rouge");
         $("#password").removeClass("vert");
@@ -122,13 +137,23 @@ $(function() {
         $("#confirm_password").addClass("vert");
         $("#confirm_password").removeClass("rouge");
         $("#confirm_password").css('border-bottom', "1px solid #90DEA6");
+      } else if(valeur.length == 0){
+        $("#confirm_password").blur(function(){
+        $("#confirm_password").css('border-bottom', "1px solid grey");
+      })
       } else {
         $("#confirm_password").addClass("rouge");
         $("#confirm_password").removeClass("vert");
         $("#confirm_password").css('border-bottom', "1px solid #DE9090");
       }
     })
+
+
+
+
   })
+
+
 
   // Fonction (avec un regex) qui teste si le mail est de la forme adéquate
   function mailValide(email) {
