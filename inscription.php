@@ -36,12 +36,12 @@
 
         <div class="label_input">
           <label for="password">Mot de passe</label>
-          <input type="password" id="password" name="password">
+          <input type="password" id="password" name="password" autocomplete>
         </div>
 
         <div class="label_input">
           <label for="confirm_password"> Confirmer le mot de passe</label>
-          <input type="password" id="confirm_password" name="confirm_password">
+          <input type="password" id="confirm_password" name="confirm_password" autocomplete>
         </div>
 
         <button type="submit" class="button_pages" name="submit"> Valider </button>

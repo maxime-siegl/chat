@@ -31,7 +31,7 @@
 
         <div class="label_input">
           <label for="password">Mot de passe</label>
-          <input type="password" id="password" name="password">
+          <input type="password" id="password" name="password" autocomplete>
         </div>
 
         <button type="submit" class="button_pages"v name="submit"> Valider </button>
