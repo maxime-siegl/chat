@@ -53,7 +53,7 @@ $(function() {
             url: "ressources/php/modifier_profil.php",
             method: "POST",
             data: {
-              image: $("input[name=avatar]").val(),
+              avatar: $("input[name=avatar]").val(),
               pseudo: $("input[name=pseudo]").val(),
               email: $("input[name=email]").val(),
               confirm_password: $("input[name=confirm_password]").val()
