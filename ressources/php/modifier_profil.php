@@ -4,27 +4,22 @@ include('../../classes/Utilisateur.php');
 session_start();
 $utilisateur = unserialize($_SESSION["utilisateur"]);
 
+
+
 if(isset($_POST['pseudo']) && !empty($_POST['pseudo'])){
   $utilisateur->modifierPseudo($_POST['pseudo'], $bdd);
   $_SESSION["utilisateur"] = serialize($utilisateur);
 }
 
-var_dump($_POST['avatar']);
-var_dump($_FILES['avatar']['name']);
-
-
 if(isset($_FILES['avatar']) && !empty($_FILES['avatar'])){
 
-  $uploaddir = 'img/';
-  $uploadfile = $uploaddir . basename($_FILES['avatar']['name']);
+  $dir = '../../img/';
+  $sourcePath = $_FILES['avatar']['tmp_name'];
+  $targetPath = $dir . $_FILES['avatar']['name'];
 
-  if(move_uploaded_file($_FILES["avatar"]["tmp_name"], $uploadfile)){
-    echo "success";
-  }else{
-    echo "fail";
-  }
+  move_uploaded_file($sourcePath,$targetPath);
 
-  $utilisateur->modifierImage($_FILES['avatar']['name'], $bdd);
+  $utilisateur->modifierImage($_FILES["avatar"]["name"], $bdd);
   $_SESSION["utilisateur"] = serialize($utilisateur);
 }
 
