@@ -55,16 +55,86 @@ $(function() {
         })
       })
 
+      // Modification du profil
+        $("#profil").submit(function(e) {
+          e.preventDefault();
+          $.ajax({
+            url: "ressources/php/modifier_profil.php",
+            method: "POST",
+            data: {
+              image: $("input[name=avatar]").val(),
+              pseudo: $("input[name=pseudo]").val(),
+              email: $("input[name=email]").val(),
+              confirm_password: $("input[name=confirm_password]").val()
+            },
+            success: function(data) {
+
+              if(data != "") {
+                $(".erreur").removeClass("hidden");
+                $(".erreur").text(data);
+              } else {
+                document.location.href = "profil.php";
+              }
+
+            }
+          })
+        })
+
+        var form = $('profil').get(0);
+	       var formData = new FormData(form);
+         formData.append('avatar', form);
+         $.ajax({
+		type		: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+		url		: "ressources/php/modifier_profil.php", // the url where we want to POST
+		data		: formData, // our data object
+		dataType	: 'json', // what type of data do we expect back from the server
+		processData: false,
+		contentType: false
+	})
+
     // On change de classe en fonction de la valeur de l'input
+    $("#pseudo").keyup(function() {
+      var valeur = $(this).val();
+      if(valeur.length >= 3) {
+
+        $("#pseudo").addClass("vert");
+        $("#pseudo").removeClass("rouge");
+        $("#pseudo").css('border-bottom', "1px solid #90DEA6");
+
+
+      } else if(valeur.length == 0){ // Lorsque le champ est vide, on rétablit la couleur d'origine
+        $("#pseudo").blur(function(){
+          $("#pseudo").css('border-bottom', "1px solid grey");
+        })
+
+      } else {
+        $("#pseudo").addClass("rouge");
+        $("#pseudo").removeClass("vert");
+        $("#pseudo").css('border-bottom', "1px solid #DE9090");
+      }
+    })
+
+    $("#pseudo").blur(function(){
+      $("#pseudo").css('border-bottom', "1px solid grey");
+    })
+
     $("#email").keyup(function() {
       var valeur = $(this).val();
       if(mailValide(valeur)) {
+
         $("#email").addClass("vert");
         $("#email").removeClass("rouge");
+        $("#email").css('border-bottom', "1px solid #90DEA6");
+
+      } else if(valeur.length == 0){
+        $("#email").blur(function(){
+          $("#email").css('border-bottom', "1px solid grey");
+        })
 
       } else {
         $("#email").addClass("rouge");
         $("#email").removeClass("vert");
+        $("#email").css('border-bottom', "1px solid #DE9090");
       }
     }),
 
@@ -73,9 +143,15 @@ $(function() {
       if(valeur.length >= 8) {
         $("#password").addClass("vert");
         $("#password").removeClass("rouge");
+        $("#password").css('border-bottom', "1px solid #90DEA6");
+      } else if(valeur.length == 0){
+        $("#password").blur(function(){
+        $("#password").css('border-bottom', "1px solid grey");
+      })
       } else {
         $("#password").addClass("rouge");
         $("#password").removeClass("vert");
+        $("#password").css('border-bottom', "1px solid #DE9090");
       }
     })
 
@@ -85,12 +161,24 @@ $(function() {
       if(valeur == ref) {
         $("#confirm_password").addClass("vert");
         $("#confirm_password").removeClass("rouge");
+        $("#confirm_password").css('border-bottom', "1px solid #90DEA6");
+      } else if(valeur.length == 0){
+        $("#confirm_password").blur(function(){
+        $("#confirm_password").css('border-bottom', "1px solid grey");
+      })
       } else {
         $("#confirm_password").addClass("rouge");
         $("#confirm_password").removeClass("vert");
+        $("#confirm_password").css('border-bottom', "1px solid #DE9090");
       }
     })
+
+
+
+
   })
+
+
 
   // Fonction (avec un regex) qui teste si le mail est de la forme adéquate
   function mailValide(email) {

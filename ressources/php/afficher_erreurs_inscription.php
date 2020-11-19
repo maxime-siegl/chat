@@ -2,7 +2,6 @@
 include('bdd.php');
 include('../../classes/Utilisateur.php');
 include('../../classes/Erreur.php');
-// Empêcher d'utiliser un email déjà existant
 
 if(empty($_POST['email']))
 {
