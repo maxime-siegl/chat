@@ -9,6 +9,9 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo'])){
   $_SESSION["utilisateur"] = serialize($utilisateur);
 }
 
+var_dump($_POST['avatar']);
+var_dump($_FILES['avatar']['name']);
+
 
 if(isset($_FILES['avatar']) && !empty($_FILES['avatar'])){
 

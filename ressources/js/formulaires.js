@@ -71,6 +71,18 @@ $(function() {
           })
         })
 
+        var form = $('profil').get(0);
+	       var formData = new FormData(form);
+         formData.append('avatar', form);
+         $.ajax({
+		type		: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+		url		: "ressources/php/modifier_profil.php", // the url where we want to POST
+		data		: formData, // our data object
+		dataType	: 'json', // what type of data do we expect back from the server
+		processData: false,
+		contentType: false
+	})
+
     // On change de classe en fonction de la valeur de l'input
     $("#pseudo").keyup(function() {
       var valeur = $(this).val();
@@ -83,14 +95,18 @@ $(function() {
 
       } else if(valeur.length == 0){ // Lorsque le champ est vide, on rétablit la couleur d'origine
         $("#pseudo").blur(function(){
-        $("#pseudo").css('border-bottom', "1px solid grey");
-      })
+          $("#pseudo").css('border-bottom', "1px solid grey");
+        })
 
       } else {
         $("#pseudo").addClass("rouge");
         $("#pseudo").removeClass("vert");
         $("#pseudo").css('border-bottom', "1px solid #DE9090");
       }
+    })
+
+    $("#pseudo").blur(function(){
+      $("#pseudo").css('border-bottom', "1px solid grey");
     })
 
     $("#email").keyup(function() {
@@ -103,8 +119,8 @@ $(function() {
 
       } else if(valeur.length == 0){
         $("#email").blur(function(){
-        $("#email").css('border-bottom', "1px solid grey");
-      })
+          $("#email").css('border-bottom', "1px solid grey");
+        })
 
       } else {
         $("#email").addClass("rouge");
