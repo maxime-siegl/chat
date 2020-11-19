@@ -20,20 +20,29 @@
         <?php include 'views/header.php'; ?>
 
         <?php
-            // if(isset($_SESSION['pseudo']) || isset($_SESSION['id']) || !empty($_SESSION)){
+            if(isset($_SESSION['pseudo']) || isset($_SESSION['id']) || !empty($_SESSION)){
+                $utilisateur = unserialize($_SESSION["utilisateur"]);
+                $admin = $utilisateur->getAdmin();
+                $pseudo = $utilisateur->getPseudo();
+                $id = $utilisateur->getId();
+
         ?>
 
         <main id="chat">
             <section id="corps_discord">
                 <section id="channels">
                     <h3>Salon</h3>
-                    <ul id="salon">
-                        <ul id="chan"></ul>
-                    </ul>
+                        <?php include 'ressources/php/affichage_salon_channel.php'; ?>
                 </section>
                 <section id="messageries">
-                    <input type="text" name="new_message" id="new_message" placeholder="Ecrivez ici...">
-                    <button id="submit">Envoyer</button>
+                    <article id="affichage_msg">
+                        <?php include 'ressources/php/affichage_messages.php' ?>
+                    </article>
+                    <div id="form_new_msg">
+                        <input type="text" name="new_message" id="new_message" placeholder="Ecrivez ici...">
+                        <button type="submit" id="create_new_message">Envoyer</button>
+                    </div>
+                    <p class="erreur"></p>
                 </section>
                 <section id="membres">
                     <ul id="personnes">
@@ -44,10 +53,10 @@
         </main>
 
         <?php
-            // }
-            // else{
-            //     // header('location:connexion.php');
-            // }
+            }
+            else{
+                header('location:connexion.php');
+            }
         ?>
 
         <?php include 'views/footer.php'; ?>

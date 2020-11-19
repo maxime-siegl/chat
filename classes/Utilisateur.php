@@ -26,6 +26,11 @@ class Utilisateur{
     return $this->_pseudo;
   }
 
+
+  public function getId() {
+    return $this->_id;
+  }
+
   public function getImage() {
     return $this->_image;
   }

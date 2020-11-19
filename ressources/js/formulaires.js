@@ -35,11 +35,20 @@ $(function() {
           },
           success: function(data) {
 
-            if(data != "ok") {
+            console.log(data);
+            var info = JSON.parse(data);
+            console.log(info);
+            console.log(info[0].pseudo);
+
+            if(info[1] === 'Success') {
+              localStorage['pseudo'] = info[0].pseudo;
+              localStorage['id'] = info[0].id;
+              localStorage['email'] = info[0].email;
+
+              document.location.href = "chat.php";
+            } else {
               $(".erreur").removeClass("hidden");
               $(".erreur").text(data);
-            } else {
-              document.location.href = "profil.php";
             }
 
           }
