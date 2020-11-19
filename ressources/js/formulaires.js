@@ -1,96 +1,87 @@
 $(function() {
   // Affichage de messages d'erreur - formulaire d'inscription
-    $("#inscription").submit(function(e) {
-      e.preventDefault();
-      $.ajax({
-        url: "ressources/php/afficher_erreurs_inscription.php",
-        method: "POST",
-        data: {
-          pseudo: $("input[name=pseudo]").val(),
-          email: $("input[name=email]").val(),
-          password: $("input[name=password]").val(),
-          confirm_password: $("input[name=confirm_password]").val()
-        },
-        success: function(data) {
+  $("#inscription").submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+      url: "ressources/php/afficher_erreurs_inscription.php",
+      method: "POST",
+      data: {
+        pseudo: $("input[name=pseudo]").val(),
+        email: $("input[name=email]").val(),
+        password: $("input[name=password]").val(),
+        confirm_password: $("input[name=confirm_password]").val()
+      },
+      success: function(data) {
 
-          if(data != "ok") {
-            $(".erreur").removeClass("hidden");
-            $(".erreur").text(data);
-          } else {
-            document.location.href = "connexion.php";
-          }
+        if(data != "ok") {
+          $(".erreur").removeClass("hidden");
+          $(".erreur").text(data);
+        } else {
+          document.location.href = "connexion.php";
         }
-      })
+      }
+    })
+  })
+
+  // Affichage de messages d'erreur - formulaire de connexion
+  $("#connexion").submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+      url: "ressources/php/afficher_erreurs_connexion.php",
+      method: "POST",
+      data: {
+        email: $("input[name=email]").val(),
+        password: $("input[name=password]").val(),
+      },
+      success: function(data) {
+
+        console.log(data);
+        var info = JSON.parse(data);
+        console.log(info);
+        console.log(info[0].pseudo);
+
+        if(info[1] === 'Success') {
+          localStorage['pseudo'] = info[0].pseudo;
+          localStorage['id'] = info[0].id;
+          localStorage['email'] = info[0].email;
+
+          document.location.href = "chat.php";
+        } else {
+          $(".erreur").removeClass("hidden");
+          $(".erreur").text(data);
+        }
+
+      }
+    })
+  })
+
+  // Modification du profil
+  $("#profil").submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+      url: "ressources/php/modifier_profil.php",
+      method: "POST",
+      data: new FormData(this),
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: function(data) {
+
+        if(data != "") {
+          $(".erreur").removeClass("hidden");
+          $(".erreur").text(data);
+        }
+
+      }
     })
 
-    // Affichage de messages d'erreur - formulaire de connexion
-      $("#connexion").submit(function(e) {
-        e.preventDefault();
-        $.ajax({
-          url: "ressources/php/afficher_erreurs_connexion.php",
-          method: "POST",
-          data: {
-            email: $("input[name=email]").val(),
-            password: $("input[name=password]").val(),
-          },
-          success: function(data) {
+    var changer_avatar = $("#avatar")[0].files[0].name;
 
-            console.log(data);
-            var info = JSON.parse(data);
-            console.log(info);
-            console.log(info[0].pseudo);
+    if(changer_avatar != "") {
+      $("#image_avatar").attr("src", "img/" + changer_avatar);
+    }
 
-            if(info[1] === 'Success') {
-              localStorage['pseudo'] = info[0].pseudo;
-              localStorage['id'] = info[0].id;
-              localStorage['email'] = info[0].email;
-
-              document.location.href = "chat.php";
-            } else {
-              $(".erreur").removeClass("hidden");
-              $(".erreur").text(data);
-            }
-
-          }
-        })
-      })
-
-      // Modification du profil
-        $("#profil").submit(function(e) {
-          e.preventDefault();
-          $.ajax({
-            url: "ressources/php/modifier_profil.php",
-            method: "POST",
-            data: {
-              avatar: $("input[name=avatar]").val(),
-              pseudo: $("input[name=pseudo]").val(),
-              email: $("input[name=email]").val(),
-              confirm_password: $("input[name=confirm_password]").val()
-            },
-            success: function(data) {
-
-              if(data != "") {
-                $(".erreur").removeClass("hidden");
-                $(".erreur").text(data);
-              } else {
-                document.location.href = "profil.php";
-              }
-
-            }
-          })
-        })
-
-        var form = $('profil').get(0);
-	       var formData = new FormData(form);
-         formData.append('avatar', form);
-         $.ajax({
-		type		: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-		url		: "ressources/php/modifier_profil.php", // the url where we want to POST
-		data		: formData, // our data object
-		dataType	: 'json', // what type of data do we expect back from the server
-		processData: false,
-		contentType: false
-	})
+  })
 
     // On change de classe en fonction de la valeur de l'input
     $("#pseudo").keyup(function() {

@@ -4,27 +4,22 @@ include('../../classes/Utilisateur.php');
 session_start();
 $utilisateur = unserialize($_SESSION["utilisateur"]);
 
+
+
 if(isset($_POST['pseudo']) && !empty($_POST['pseudo'])){
   $utilisateur->modifierPseudo($_POST['pseudo'], $bdd);
   $_SESSION["utilisateur"] = serialize($utilisateur);
 }
 
-if(isset($_POST['avatar']) && !empty($_POST['avatar'])){
-  // On ne garde du chemin généré par POST que le nom du fichier
-  // Exemple : "C:\fakepath\mountain.jpeg" devient "mountain.jpeg"
-  $avatar = explode("\\", $_POST['avatar']);
+if(isset($_FILES['avatar']) && !empty($_FILES['avatar'])){
 
-  $uploaddir = 'img/';
-  $uploadfile = $uploaddir . $avatar[2];
-  echo $avatar[2] ."<br>";
-  echo $uploadfile ."<br>";
-  if(move_uploaded_file($_POST["avatar"], $uploadfile)){
-    echo "success";
-  }else{
-    echo "fail";
-  }
+  $dir = '../../img/';
+  $sourcePath = $_FILES['avatar']['tmp_name'];
+  $targetPath = $dir . $_FILES['avatar']['name'];
 
-  $utilisateur->modifierImage($avatar[2], $bdd);
+  move_uploaded_file($sourcePath,$targetPath);
+
+  $utilisateur->modifierImage($_FILES["avatar"]["name"], $bdd);
   $_SESSION["utilisateur"] = serialize($utilisateur);
 }
 
