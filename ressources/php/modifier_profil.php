@@ -12,11 +12,12 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo'])){
 var_dump($_POST['avatar']);
 
 if(isset($_POST['avatar']) && !empty($_POST['avatar'])){
-  var_dump($_POST['avatar']);
   // On ne garde du chemin généré par POST que le nom du fichier
+  // Exemple : "C:\fakepath\mountain.jpeg" devient "mountain.jpeg"
+  $avatar = str_split($_POST['avatar'], 12); 
 
   $uploaddir = 'img/';
-  $uploadfile = $uploaddir . basename($_POST['avatar']);
+  $uploadfile = $uploaddir . $avatar;
 
   if(move_uploaded_file($_POST["avatar"], $uploadfile)){
     echo "success";
@@ -24,7 +25,7 @@ if(isset($_POST['avatar']) && !empty($_POST['avatar'])){
     echo "fail";
   }
 
-  $utilisateur->modifierImage($_POST['avatar'], $bdd);
+  $utilisateur->modifierImage($avatar[1], $bdd);
   $_SESSION["utilisateur"] = serialize($utilisateur);
 }
 
