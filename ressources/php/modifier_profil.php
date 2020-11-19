@@ -9,23 +9,22 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo'])){
   $_SESSION["utilisateur"] = serialize($utilisateur);
 }
 
-var_dump($_POST['avatar']);
-
 if(isset($_POST['avatar']) && !empty($_POST['avatar'])){
   // On ne garde du chemin généré par POST que le nom du fichier
   // Exemple : "C:\fakepath\mountain.jpeg" devient "mountain.jpeg"
-  $avatar = str_split($_POST['avatar'], 12); 
+  $avatar = explode("\\", $_POST['avatar']);
 
   $uploaddir = 'img/';
-  $uploadfile = $uploaddir . $avatar;
-
+  $uploadfile = $uploaddir . $avatar[2];
+  echo $avatar[2] ."<br>";
+  echo $uploadfile ."<br>";
   if(move_uploaded_file($_POST["avatar"], $uploadfile)){
     echo "success";
   }else{
     echo "fail";
   }
 
-  $utilisateur->modifierImage($avatar[1], $bdd);
+  $utilisateur->modifierImage($avatar[2], $bdd);
   $_SESSION["utilisateur"] = serialize($utilisateur);
 }
 
