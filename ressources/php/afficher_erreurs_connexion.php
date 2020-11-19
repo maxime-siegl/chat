@@ -47,14 +47,22 @@ if(isset($_POST['email']) && !$erreur)
 if(!$erreur) {
 
   $utilisateur = new Utilisateur();
+  $tab_verif = [];
+
+  $recup_info = $bdd->prepare("SELECT * FROM utilisateurs WHERE email = ?");
+  $recup_info->execute([$email]);
+  $info = $recup_info->fetch(PDO::FETCH_ASSOC);
+
+  array_push($tab_verif, $info);
 
   if($utilisateur->seConnecter($email, $password, $bdd)) {
 
     $_SESSION["utilisateur"] = serialize($utilisateur);
-    echo "ok";
+    array_push($tab_verif, 'Success');
+
+    echo json_encode($tab_verif);
 
   } else {
-
     $wrong = "wrong_password";
     $erreur = new Erreur($bdd);
     $erreur->afficherErreur($wrong);
