@@ -25,14 +25,25 @@
                 $admin = $utilisateur->getAdmin();
                 $pseudo = $utilisateur->getPseudo();
                 $id = $utilisateur->getId();
-
         ?>
 
         <main id="chat">
             <section id="corps_discord">
                 <section id="channels">
-                    <h3>Salon</h3>
-                        <?php include 'ressources/php/affichage_salon_channel.php'; ?>
+                    <div id="salon_plus">
+                        <div id="titre_salon">
+                            <h3 id="h3_salon">
+                                <img id="create_salon" src="https://img.icons8.com/nolan/25/plus.png"/> &#160; Salon
+                            </h3>
+                            <img id="moins_salon" src="https://img.icons8.com/nolan/25/minus.png"/>
+                            <form method="POST" id="form_new">
+                                <input type="text" name="new_salon" id="new_salon" placeholder="Nom du Salon...">
+                                <button type="submit"><img src="https://img.icons8.com/nolan/25/checked-checkbox.png"/></button>
+                            </form>
+                        </div>
+                        <?php include 'ressources/php/affichage_salon.php'; ?>
+
+
                 </section>
                 <section id="messageries">
                     <article id="affichage_msg">
@@ -46,7 +57,7 @@
                 </section>
                 <section id="membres">
                     <ul id="personnes">
-                        <li><h3> Membres du Salon </h3></li>
+                        <li><h3> Membres du Salon &#160; <img id="create_salon" src="https://img.icons8.com/nolan/30/plus.png"/> </h3></li>
                     </ul>
                 </section>
             </section>

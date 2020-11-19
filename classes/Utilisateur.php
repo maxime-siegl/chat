@@ -92,7 +92,7 @@ class Utilisateur{
       $this->_pseudo = $donnees['pseudo'];
       $this->_password = $donnees['password'];
       $this->_image = $donnees['image'];
-      $this->_admin = $donnees['admin'];
+      // $this->_admin = $donnees['admin'];
   }
 
 }
