@@ -75,16 +75,19 @@ $(function() {
       }
     })
 
-    var changer_avatar = $("#avatar")[0].files[0].name;
+    if($("#avatar").val() != "") {
+      var changer_avatar = $("#avatar")[0].files[0].name;
 
-    if(changer_avatar != "") {
-      $("#image_avatar").attr("src", "img/" + changer_avatar);
+      if(changer_avatar != "") {
+        $("#image_avatar").attr("src", "img/" + changer_avatar);
+      }
     }
-
   })
 
     // On change de classe en fonction de la valeur de l'input
     $("#pseudo").keyup(function() {
+      $(".erreur").addClass("hidden");
+
       var valeur = $(this).val();
       if(valeur.length >= 3) {
 
@@ -109,7 +112,9 @@ $(function() {
       $("#pseudo").css('border-bottom', "1px solid grey");
     })
 
+
     $("#email").keyup(function() {
+      $(".erreur").addClass("hidden");
       var valeur = $(this).val();
       if(mailValide(valeur)) {
 
@@ -130,6 +135,7 @@ $(function() {
     }),
 
     $("#password").keyup(function() {
+      $(".erreur").addClass("hidden");
       var valeur = $(this).val();
       if(valeur.length >= 8) {
         $("#password").addClass("vert");
@@ -147,6 +153,7 @@ $(function() {
     })
 
     $("#confirm_password").keyup(function() {
+      $(".erreur").addClass("hidden");
       var valeur = $(this).val();
       var ref = $("#password").val();
       if(valeur == ref) {
@@ -163,10 +170,6 @@ $(function() {
         $("#confirm_password").css('border-bottom', "1px solid #DE9090");
       }
     })
-
-
-
-
   })
 
 
