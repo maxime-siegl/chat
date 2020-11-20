@@ -33,8 +33,13 @@
     // });
 
     // new salon
-    $('#new_salon').submit(function(e){
+    $('#submit_salon').click(function(e){
         e.preventDefault();
+
+        $('#form_new').hide();
+        $('#h3_salon').show();
+        $('#moins_salon').hide();
+
         console.log($('#new_salon').val());
         $.post(
             'ressources/php/creation.php',
@@ -43,13 +48,17 @@
             },
             function(data){
                 console.log(data);
+                var result = JSON.parse(data);
+                console.log(result);
 
-                if(data[1] == 'Success'){
-                    $('.salon').append('<li id="'+ data[0] +'">'+ new_salon +'</li>');
-                    console.log(data);
+                var id_plus_un = ++result[0][0];
+
+                if(data == 'erreur'){
+                    console.log('erreur');
                 }
                 else{
-                    console.log(data);
+                    $('.salon').append('<li id="'+ id_plus_un +'"><a href="chat.php?id_salon_current='+ id_plus_un +'">'+ result[1] +'</a></li>');
+                    console.log('success');
                 }
             }
         );
@@ -73,12 +82,36 @@
     // });
 
     // new message
-    $('#create_new_message').submit(function creer_message(){
+    $('#submit_new_message').click(function creer_message(e){
+        e.preventDefault();
+
+        // recup url get envoyé (ici le num du salon)
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                }
+            }
+        };
+
+        var id_salon_current = getUrlParameter('id_salon_current');
+        console.log(id_salon_current);
 
         $.post(
             "ressources/php/traitement_chat.php",
-            { message : $('#new_message').val() },
+            {
+                message : $('#new_message').val(),
+                id_salon_current : id_salon_current
+            },
             function(data){
+                console.log(data);
                 if(data != 'success'){
                     $('.erreur').append('Votre message n\'a pas pu être transmis');
                 }
@@ -94,7 +127,7 @@
                     var message = $('#new_message').val();
 
                     $('#affichage_msg').append('<div id="one_message"></div>');
-                    $('#one_message').append($('<p class="entete_msg">'+ localStorage['pseudo'] + current_date +'</p>'));
+                    $('#one_message').append($('<p class="entete_msg">'+ localStorage['pseudo'] +'&nbsp;'+ current_date +'</p>'));
                     $('#one_message').append($('<p class="corps_msg">'+ message +'</p>'));
 
                     // stock tab, recup tab, map ??????

@@ -1,12 +1,12 @@
 <?php
     // recup tableau salon
-    $requete = $bdd->prepare("SELECT * FROM salons");
+    $requete = $bdd->prepare("SELECT * FROM salons ORDER BY name_salon ASC");
     $requete->execute();
     $all_salon = $requete->fetchAll(PDO::FETCH_ASSOC);
 
     echo '<ul class="salon">';
     foreach($all_salon as $salon){
-        echo '<li id="'.$salon['id'].'">' .$salon['name_salon']. '</li>';
+        echo '<li id="'.$salon['id'].'"><a href="chat.php?id_salon_current='.$salon['id'].'">' .$salon['name_salon']. '</a></li>';
         // echo '<ul class="chan">
         //             <li id="channel_salon'.$salon['id'].'">
         //                 <img id="create_channel" src="https://img.icons8.com/nolan/20/plus.png"/>

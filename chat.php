@@ -32,15 +32,19 @@
                 <section id="channels">
                     <div id="salon_plus">
                         <div id="titre_salon">
+                        <?php if($admin == 1){ ?>
                             <h3 id="h3_salon">
                                 <img id="create_salon" src="https://img.icons8.com/nolan/25/plus.png"/> &#160; Salon
                             </h3>
                             <img id="moins_salon" src="https://img.icons8.com/nolan/25/minus.png"/>
                             <form method="POST" id="form_new">
-                                <input type="text" name="new_salon" id="new_salon" placeholder="Nom du Salon...">
-                                <button type="submit"><img src="https://img.icons8.com/nolan/25/checked-checkbox.png"/></button>
+                                <input type="text" name="new_salon" id="new_salon" placeholder="Nom du Salon..." >
+                                <button type="submit" id="submit_salon"><img src="https://img.icons8.com/nolan/25/checked-checkbox.png"/></button>
                             </form>
                         </div>
+                        <?php }else{ ?>
+                        <h3>Salons</h3>
+                        <?php } ?>
                         <?php include 'ressources/php/affichage_salon.php'; ?>
 
 
@@ -50,14 +54,17 @@
                         <?php include 'ressources/php/affichage_messages.php' ?>
                     </article>
                     <div id="form_new_msg">
-                        <input type="text" name="new_message" id="new_message" placeholder="Ecrivez ici...">
-                        <button type="submit" id="create_new_message">Envoyer</button>
+                        <form method="POST">
+                            <input type="text" name="new_message" id="new_message" placeholder="Ecrivez ici...">
+                            <button type="submit" id="submit_new_message">Envoyer</button>
+                        </form>
                     </div>
                     <p class="erreur"></p>
                 </section>
                 <section id="membres">
                     <ul id="personnes">
-                        <li><h3> Membres du Salon &#160; <img id="create_salon" src="https://img.icons8.com/nolan/30/plus.png"/> </h3></li>
+                        <li><h3> Membres du Salon </h3></li>
+                        <?php include 'ressources/php/affichage_users.php' ?>
                     </ul>
                 </section>
             </section>
