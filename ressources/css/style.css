@@ -99,20 +99,161 @@ footer p{
 }
 
 #chat{
-    background-image: url('../../img/background.jpg');
+    background-image: url('../../img/background2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 4%;
     padding-bottom: 4%;
     padding-left: 7%;
     padding-right: 7%;
+    height: 340px;
 }
 
 #corps_discord{
-    background-color: rgba(29, 28, 34, 0.774);
+    background-color: rgba(29, 28, 34);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
-    height: 45vh;
+    height: 100%;
+    border-radius: 20px;
+}
+
+#channels{
+    width: 215px;
+    height: 350px;
+}
+
+#h3_salon{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: rgb(28, 83, 185);
+    font-size: 1.5em;
+}
+
+#titre_salon{
+    text-align: center;
+    color: whitesmoke;
+    font-size: 1.1em;
+}
+
+#titre_salon span{
+    font-weight: bold;
+}
+
+#form_new{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#form_new input{
+    border-radius: 15px;
+    padding-left: 4%;
+    outline: none;
+    width: 60%;
+}
+
+.salon{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin-left: 15%;
+    overflow-y: auto;
+}
+
+.salon li{
+    margin-top: 4%;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.salon li a{
+    color:  rgb(160, 36, 212);
+    font-size: 1.2em;
+}
+
+.salon li a:hover{
+    color:  rgb(169, 99, 249);
+    font-weight: bold;
+}
+
+#membres{
+    width: 215px;
+    height: 350px;
+}
+
+#personnes{
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+#personnes h3{
+    color: rgb(28, 83, 185);
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#personnes li{
+    text-decoration: none;
+    list-style-type: none;
+    color: rgb(160, 36, 212);
+    text-align: right;
+    margin-top: 5%;
+    margin-right: 15%;
+}
+
+#messageries{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 4%;
+    margin-right: 4%;
+    overflow-y: auto;
+}
+
+.msg_complet{
+    border-radius: 15px;
+    padding: 2%;
+}
+
+.msg_complet:hover{
+    background-color: gray;
+}
+
+.entete_msg{
+    color: rgb(169, 99, 249);
+    font-weight: bold;
+}
+
+.corps_msg{
+    color: rgb(192, 191, 220);
+    text-indent: 5%;
+}
+
+#form_new_msg{
+    position: absolute;
+    left: auto;
+    right: auto;
+    left: 0;
+    right: 0;
+    bottom: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#form_new_msg form{
+    display: flex;
+    flex-direction: row;
+}
+
+#new_message{
+    border-radius: 15px;
+    padding-left: 4%;
+    outline: none;
 }

@@ -1,5 +1,5 @@
 <?php
-    $req = $bdd->prepare("SELECT * FROM utilisateurs");
+    $req = $bdd->prepare("SELECT * FROM utilisateurs ORDER BY pseudo ASC");
     $req->execute();
     $result = $req->fetchAll(PDO::FETCH_ASSOC);
 

@@ -12,7 +12,7 @@
     $all_messages = $query->fetchAll(PDO::FETCH_ASSOC);
 
     foreach($all_messages as $message){
-        echo '<div id="one_message">';
+        echo '<div id="one_message" class="msg_complet">';
 
         $date_conforme = date('d/m H:i', strtotime($message['date']));
 

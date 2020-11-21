@@ -25,6 +25,8 @@
                 $admin = $utilisateur->getAdmin();
                 $pseudo = $utilisateur->getPseudo();
                 $id = $utilisateur->getId();
+
+                // var_dump($utilisateur);
         ?>
 
         <main id="chat">
@@ -36,34 +38,42 @@
                             <h3 id="h3_salon">
                                 <img id="create_salon" src="https://img.icons8.com/nolan/25/plus.png"/> &#160; Salon
                             </h3>
-                            <img id="moins_salon" src="https://img.icons8.com/nolan/25/minus.png"/>
+
                             <form method="POST" id="form_new">
+                                <img id="moins_salon" src="https://img.icons8.com/nolan/25/minus.png"/>
                                 <input type="text" name="new_salon" id="new_salon" placeholder="Nom du Salon..." >
-                                <button type="submit" id="submit_salon"><img src="https://img.icons8.com/nolan/25/checked-checkbox.png"/></button>
+                                <button type="submit" id="submit_salon"></button>
                             </form>
                         </div>
                         <?php }else{ ?>
                         <h3>Salons</h3>
                         <?php } ?>
                         <?php include 'ressources/php/affichage_salon.php'; ?>
-
-
+                    </div>
                 </section>
+
                 <section id="messageries">
+                    <p id="titre_salon">
+                        Vous êtes sur le salon 
+                        <span>
+                            <?php include 'ressources/php/afficher_current_salon.php'; ?>
+                        </span>
+                    </p>
                     <article id="affichage_msg">
                         <?php include 'ressources/php/affichage_messages.php' ?>
                     </article>
                     <div id="form_new_msg">
                         <form method="POST">
-                            <input type="text" name="new_message" id="new_message" placeholder="Ecrivez ici...">
-                            <button type="submit" id="submit_new_message">Envoyer</button>
+                            <textarea name="new_message" id="new_message" cols="30" rows="1" placeholder="Ecrivez ici..."></textarea>
+                            <button type="submit" id="submit_new_message"></button>
                         </form>
                     </div>
                     <p class="erreur"></p>
                 </section>
+
                 <section id="membres">
                     <ul id="personnes">
-                        <li><h3> Membres du Salon </h3></li>
+                        <h3> Membres du Salon </h3>
                         <?php include 'ressources/php/affichage_users.php' ?>
                     </ul>
                 </section>
