@@ -46,20 +46,45 @@
 
           <div class="label_input_profil">
             <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="password">
+            <input type="password" autocomplete id="password" name="password">
           </div>
 
           <div class="label_input_profil">
             <label for="confirm_password"> Confirmer le mot de passe</label>
-            <input type="password" id="confirm_password" name="confirm_password">
+            <input type="password" autocomplete id="confirm_password" name="confirm_password">
           </div>
 
           <button type="submit" class="button_pages" name="submit"> Modifier </button>
 
         </form>
+
+        <?php
+          $utilisateur = unserialize($_SESSION["utilisateur"]);
+          $admin = $utilisateur->getAdmin();
+          $pseudo = $utilisateur->getPseudo();
+          $id = $utilisateur->getId();
+
+          if(isset($utilisateur) && !empty($utilisateur)){
+        ?>
+          <table id="tab_admin">
+            <thead>
+              <tr>
+                <th>Utilisateurs</th>
+                <th>Droit</th>
+                <th>Modif Droit / Suppression</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php include 'ressources/php/users_tab_admin.php'; ?>
+            </tbody>
+          </table>
+        <?php
+          }
+        ?>
      </main>
 
      <?php include('views/footer.php'); ?>
    </body>
    <script src="ressources/js/formulaires.js" charset="utf-8"></script>
+   <script src="ressources/js/modif_admin.js"></script>
 </html>

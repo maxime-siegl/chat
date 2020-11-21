@@ -60,12 +60,12 @@
                         </span>
                     </p>
                     <article id="affichage_msg">
-                        <?php include 'ressources/php/affichage_messages.php' ?>
+                        <?php // include 'ressources/php/affichage_messages.php' ?>
                     </article>
                     <div id="form_new_msg">
                         <form method="POST">
                             <textarea name="new_message" id="new_message" cols="30" rows="1" placeholder="Ecrivez ici..."></textarea>
-                            <button type="submit" id="submit_new_message"></button>
+                            <button type="submit" id="submit_new_message"><img src="https://img.icons8.com/material-outlined/24/000000/filled-sent.png"/></button>
                         </form>
                     </div>
                     <p class="erreur"></p>

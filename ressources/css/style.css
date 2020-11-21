@@ -255,5 +255,37 @@ footer p{
 #new_message{
     border-radius: 15px;
     padding-left: 4%;
+    width: 80%;
     outline: none;
+}
+
+#submit_new_message{
+    width: 5vw;
+    height: 5vh;
+    border-radius: 50%;
+}
+
+/********** PROFIL **********/
+#tab_admin{
+    border-collapse: collapse;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#tab_admin tr{
+    border-collapse: collapse;
+    background-color: rgba(29, 28, 34);
+    border-radius: 15px;
+    color: rgb(192, 191, 220);
+}
+
+#tab_admin td,
+#tab_admin th{
+    width: 20vw;
+    height: 10vh;
+    border-collapse: collapse;
+    padding: 2%;
 }

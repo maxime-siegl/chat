@@ -1,23 +1,28 @@
 <?php
-    if(!isset($_GET['id_salon_current']) || empty($_GET['id_salon_current'])){
+    session_start();
+    include('bdd.php');
+    include('../../classes/Utilisateur.php');
+    include('../../classes/Erreur.php');
+
+    if(!isset($_POST['id_salon_current']) || empty($_POST['id_salon_current'])){
         $salon_id = 3;
-    } else if(isset($_GET['id_salon_current'])){
+    } else if(isset($_POST['id_salon_current'])){
         // recup en get le num du salon
-        $salon_id = $_GET['id_salon_current'];
+        $salon_id = $_POST['id_salon_current'];
     }
 
-    // recup les messages du channel
-    $query = $bdd->prepare("SELECT * FROM messages INNER JOIN utilisateurs on messages.id_creator = utilisateurs.id WHERE id_salon = ? ");
-    $query->execute([$salon_id]);
-    $all_messages = $query->fetchAll(PDO::FETCH_ASSOC);
+    if(isset($salon_id) && !empty($salon_id)){
+        // recup les messages du channel
+        $query = $bdd->prepare("SELECT *, messages.id as message_id FROM messages INNER JOIN utilisateurs on messages.id_creator = utilisateurs.id WHERE id_salon = ? ");
+        $query->execute([$salon_id]);
+        $all_messages = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    foreach($all_messages as $message){
-        echo '<div id="one_message" class="msg_complet">';
+        $tab_resultat_message = [];
+        array_push($tab_resultat_message, $all_messages);
 
-        $date_conforme = date('d/m H:i', strtotime($message['date']));
+        echo json_encode($tab_resultat_message);
 
-        echo '<p class="entete_msg">'. $message['pseudo'].'&nbsp;'. $date_conforme .'</p>';
-        echo '<p class="corps_msg">'. $message['message'] .'</p>';
-        echo '</div>';
+    }else{
+        echo 'Failed';
     }
 ?>

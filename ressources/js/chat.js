@@ -1,137 +1,191 @@
-    // cacher les input creation
-    $('#form_new').hide();
-    $('#moins_salon').hide();
-    // $('#new_chan').hide();
-    // $('#moins_channel').hide();
-
-    // afficher input new salon
-    $('#create_salon').click(function(){
-        $('#form_new').show();
-        $('#h3_salon').hide();
-        $('#moins_salon').show();
-    });
-
-    // recacher l'input new salon
-    $('#moins_salon').click(function(){
+    $(document).ready(function(){
+        // cacher les input creation
         $('#form_new').hide();
-        $('#h3_salon').show();
         $('#moins_salon').hide();
-    });
+        // $('#new_chan').hide();
+        // $('#moins_channel').hide();
 
-    // // afficher input new channel
-    // $('#create_channel').click(function(){
-    //     $('#new_chan').show();
-    //     $('#new_channel').hide();
-    //     $('#moins_channel').show();
-    // });
+        affichage_msg();
 
-    // // recacher input new channel
-    // $('#moins_channel').click(function(){
-    //     $('#new_chan').hide();
-    //     $('#new_channel').show();
-    //     $('#moins_channel').hide();
-    // });
+        // afficher input new salon
+        $('#create_salon').click(function(){
+            $('#form_new').show();
+            $('#h3_salon').hide();
+            $('#moins_salon').show();
+        });
 
-    // new salon
-    $('#submit_salon').click(function(e){
-        e.preventDefault();
+        // recacher l'input new salon
+        $('#moins_salon').click(function(){
+            $('#form_new').hide();
+            $('#h3_salon').show();
+            $('#moins_salon').hide();
+        });
 
-        $('#form_new').hide();
-        $('#h3_salon').show();
-        $('#moins_salon').hide();
+        // // afficher input new channel
+        // $('#create_channel').click(function(){
+        //     $('#new_chan').show();
+        //     $('#new_channel').hide();
+        //     $('#moins_channel').show();
+        // });
 
-        console.log($('#new_salon').val());
-        $.post(
-            'ressources/php/creation.php',
-            {
-                new_salon : $('#new_salon').val()
-            },
-            function(data){
-                console.log(data);
-                var result = JSON.parse(data);
-                console.log(result);
+        // // recacher input new channel
+        // $('#moins_channel').click(function(){
+        //     $('#new_chan').hide();
+        //     $('#new_channel').show();
+        //     $('#moins_channel').hide();
+        // });
 
-                var id_plus_un = ++result[0][0];
+        // new salon
+        $('#submit_salon').click(function(e){
+            e.preventDefault();
 
-                if(data == 'erreur'){
-                    console.log('erreur');
+            $('#form_new').hide();
+            $('#h3_salon').show();
+            $('#moins_salon').hide();
+
+            console.log($('#new_salon').val());
+            $.post(
+                'ressources/php/creation.php',
+                {
+                    new_salon : $('#new_salon').val()
+                },
+                function(data){
+                    console.log(data);
+                    var result = JSON.parse(data);
+                    console.log(result);
+
+                    var id_plus_un = ++result[0][0];
+
+                    if(data == 'erreur'){
+                        console.log('erreur');
+                    }
+                    else{
+                        $('.salon').append('<li id="'+ id_plus_un +'"><a href="chat.php?id_salon_current='+ id_plus_un +'">'+ result[1] +'</a></li>');
+                        console.log('success');
+                    }
                 }
-                else{
-                    $('.salon').append('<li id="'+ id_plus_un +'"><a href="chat.php?id_salon_current='+ id_plus_un +'">'+ result[1] +'</a></li>');
-                    console.log('success');
+            );
+        })
+
+        // // new channel
+        // $('#new_channel').submit(function(e){
+        //     e.preventDefault();
+
+        //     $.post(
+        //         'ressources/php/creation.php',
+        //         {
+        //             new_salon : $('#new_channel').val(),
+        //         },
+        //         function(data){
+        //             if(data == "Success"){
+        //                 $('.chan').append('<li>'+ new_channel +'</li>');
+        //             }
+        //         }
+        //     );
+        // });
+
+        // new message
+        $('#submit_new_message').click(function creer_message(e){
+            e.preventDefault();
+
+            // recup url get envoyé (ici le num du salon)
+            var getUrlParameter = function getUrlParameter(sParam) {
+                var sPageURL = window.location.search.substring(1),
+                    sURLVariables = sPageURL.split('&'),
+                    sParameterName,
+                    i;
+
+                for (i = 0; i < sURLVariables.length; i++) {
+                    sParameterName = sURLVariables[i].split('=');
+
+                    if (sParameterName[0] === sParam) {
+                        return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                    }
                 }
-            }
-        );
-    })
+            };
 
-    // // new channel
-    // $('#new_channel').submit(function(e){
-    //     e.preventDefault();
+            var id_salon_current = getUrlParameter('id_salon_current');
+            console.log(id_salon_current);
 
-    //     $.post(
-    //         'ressources/php/creation.php',
-    //         {
-    //             new_salon : $('#new_channel').val(),
-    //         },
-    //         function(data){
-    //             if(data == "Success"){
-    //                 $('.chan').append('<li>'+ new_channel +'</li>');
-    //             }
-    //         }
-    //     );
-    // });
+            $.post(
+                "ressources/php/traitement_chat.php",
+                {
+                    message : $('#new_message').val(),
+                    id_salon_current : id_salon_current
+                },
+                function(data){
+                    console.log(data);
+                    if(data != 'success'){
+                        $('.erreur').append('Votre message n\'a pas pu être transmis');
+                    }
+                    else{
+                        var date = new Date();
+                        var day = date.getDate();
+                        var month = date.getMonth();
+                        var hours = date.getHours();
+                        var minutes = date.getMinutes();
 
-    // new message
-    $('#submit_new_message').click(function creer_message(e){
-        e.preventDefault();
+                        var current_date = day + '/' + month + ' ' + hours + ':' + minutes;
 
-        // recup url get envoyé (ici le num du salon)
-        var getUrlParameter = function getUrlParameter(sParam) {
-            var sPageURL = window.location.search.substring(1),
-                sURLVariables = sPageURL.split('&'),
-                sParameterName,
-                i;
+                        var message = $('#new_message').val();
 
-            for (i = 0; i < sURLVariables.length; i++) {
-                sParameterName = sURLVariables[i].split('=');
+                        $('#affichage_msg').append('<div id="one_message"></div>');
+                        $('#one_message').append($('<p class="entete_msg">'+ localStorage['pseudo'] +'&nbsp;'+ current_date +'</p>'));
+                        $('#one_message').append($('<p class="corps_msg">'+ message +'</p>'));
 
-                if (sParameterName[0] === sParam) {
-                    return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                        // stock tab, recup tab, map ??????
+                    }
                 }
-            }
-        };
+            );
+        });
 
-        var id_salon_current = getUrlParameter('id_salon_current');
-        console.log(id_salon_current);
+        function affichage_msg(){
 
-        $.post(
-            "ressources/php/traitement_chat.php",
-            {
-                message : $('#new_message').val(),
-                id_salon_current : id_salon_current
-            },
-            function(data){
-                console.log(data);
-                if(data != 'success'){
-                    $('.erreur').append('Votre message n\'a pas pu être transmis');
+            var getUrlParameter = function getUrlParameter(sParam) {
+                var sPageURL = window.location.search.substring(1),
+                    sURLVariables = sPageURL.split('&'),
+                    sParameterName,
+                    i;
+
+                for (i = 0; i < sURLVariables.length; i++) {
+                    sParameterName = sURLVariables[i].split('=');
+
+                    if (sParameterName[0] === sParam) {
+                        return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                    }
                 }
-                else{
-                    var date = new Date();
-                    var day = date.getDate();
-                    var month = date.getMonth();
-                    var hours = date.getHours();
-                    var minutes = date.getMinutes();
+            };
 
-                    var current_date = day + '/' + month + ' ' + hours + ':' + minutes;
+            var id_salon_current = getUrlParameter('id_salon_current');
+            console.log(id_salon_current);
 
-                    var message = $('#new_message').val();
+            $.post(
+                'ressources/php/affichage_messages.php',
+                {
+                    id_salon_current : id_salon_current
+                },
+                function(data){
+                    console.log(data);
+                    var message_recup = JSON.parse(data);
+                    console.log(message_recup);
 
-                    $('#affichage_msg').append('<div id="one_message"></div>');
-                    $('#one_message').append($('<p class="entete_msg">'+ localStorage['pseudo'] +'&nbsp;'+ current_date +'</p>'));
-                    $('#one_message').append($('<p class="corps_msg">'+ message +'</p>'));
+                    if(data != 'Failed'){
+                        for(var i=0; i <= message_recup[0].length; i++){
 
-                    // stock tab, recup tab, map ??????
+                            var date = new Date(message_recup[0][i]['date']);
+                            var day = date.getDate();
+                            var month = date.getMonth();
+                            var hours = date.getHours();
+                            var minutes = date.getMinutes();
+                            var date_current = day + '/' + month + ' ' + hours + ':' + minutes;
+
+                            $('#affichage_msg').append('<div id="one_message"></div>');
+                            $('#one_message').append($('<p class="entete_msg">'+ message_recup[0][i]['pseudo'] +'&nbsp;'+ date_current +'</p>'));
+                            $('#one_message').append($('<p class="corps_msg">'+ message_recup[0][i]['message'] +'</p>'));
+                        }
+                    }
                 }
-            }
-        );
+            )
+            var actualisation = setTimeout("affichage_msg();", 10000);
+        }
     });
