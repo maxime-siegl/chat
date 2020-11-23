@@ -106,7 +106,7 @@ footer p{
     padding-bottom: 4%;
     padding-left: 7%;
     padding-right: 7%;
-    height: 340px;
+    height: 59vh;
 }
 
 #corps_discord{
@@ -115,13 +115,13 @@ footer p{
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     border-radius: 20px;
 }
 
 #channels{
-    width: 215px;
-    height: 350px;
+    width: 35%;
+    height: 100%;
 }
 
 #h3_salon{
@@ -182,8 +182,8 @@ footer p{
 }
 
 #membres{
-    width: 215px;
-    height: 350px;
+    width: 100%;
+    height: 100%;
 }
 
 #personnes{
@@ -208,8 +208,8 @@ footer p{
 }
 
 #messageries{
-    position: relative;
     display: flex;
+    width: 100%;
     flex-direction: column;
     margin-left: 4%;
     margin-right: 4%;
@@ -236,12 +236,13 @@ footer p{
 }
 
 #form_new_msg{
-    position: absolute;
+    position: relative;
     left: auto;
     right: auto;
     left: 0;
     right: 0;
     bottom: 1%;
+    margin-top: 10%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -288,4 +289,201 @@ footer p{
     height: 10vh;
     border-collapse: collapse;
     padding: 2%;
+}
+
+
+#open_nav{
+    display: none;
+}
+
+#nav_close{
+    display: none;
+}
+
+#open_nav2{
+    display: none;
+}
+
+#nav_close2{
+    display: none;
+}
+
+
+@media screen and (max-width: 800px){
+    #channels{
+        width: 0%;
+    }
+
+    #nav_close,
+    #nav_close2{
+        display: block;
+    }
+
+    #open_nav{
+        display: block;
+    }
+    /* MENU */
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 2%;
+        transition: 0.5s;
+    }
+    
+    .sidebar a {
+        margin-top: 3%;
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+    
+    .sidebar a i{
+        color: white;
+    }
+    
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+    
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+    
+    .openbtn {
+        position: fixed;
+        top: 80px;
+        left: 1px;
+        cursor: pointer;
+        background-color: rgba(17, 17, 17, 0.6);
+        color: white;
+        border: none;
+        z-index: 1;
+    }
+    
+    .openbtn:hover {
+        background-color: rgb(68, 68, 68);
+    }
+    
+    #open_nav {
+        transition: margin-left .5s;
+        margin-left: 3%;
+    }
+    
+    /* header #link{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-right: 15%;
+    }
+    
+    header #link a{
+        padding: 2%;
+    }
+     */
+    @media screen and (max-height: 450px) {
+        .sidebar {padding-top: 15px;}
+        .sidebar a {font-size: 18px;}
+    }
+
+
+    #open_nav2{
+        display: block;
+    }
+    /* MENU */
+    .sidebar2 {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 2%;
+        transition: 0.5s;
+    }
+    
+    .sidebar2 a {
+        margin-top: 3%;
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+    
+    .sidebar2 a i{
+        color: white;
+    }
+    
+    .sidebar2 a:hover {
+        color: #f1f1f1;
+    }
+    
+    .sidebar2 .closebtn2 {
+        position: absolute;
+        top: 0;
+        right: 4px;
+        font-size: 36px;
+        margin-right: 4px;
+    }
+    
+    .openbtn2 {
+        position: fixed;
+        top: 80px;
+        right: 1px;
+        cursor: pointer;
+        background-color: rgba(17, 17, 17, 0.6);
+        color: white;
+        border: none;
+        z-index: 1;
+    }
+    
+    .openbtn2:hover {
+        background-color: rgb(68, 68, 68);
+    }
+    
+    #open_nav2 {
+        transition: margin-left .5s;
+        margin-right: 3%;
+    }
+    
+    /* header #link{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-right: 15%;
+    }
+    
+    header #link a{
+        padding: 2%;
+    }
+     */
+    @media screen and (max-height: 450px) {
+        .sidebar2 {padding-top: 15px;}
+        .sidebar2 a {font-size: 18px;}
+    }
+    /* FIN MENU */
+
+    #image{
+        display: none;
+    }
+
+    #intro{
+        width: 95%;
+    }
 }

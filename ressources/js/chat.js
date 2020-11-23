@@ -186,6 +186,46 @@
                     }
                 }
             )
-            var actualisation = setTimeout("affichage_msg();", 10000);
+            setTimeout("affichage_msg();", 10000);
         }
+
+
+        $('#nav_open').click(function(){
+            openNav();
+            $('#nav_open').hide();
+        });
+        $('#nav_close').click(function(){
+            closeNav();
+            $('#nav_open').show();
+        });
+        // Le MENU
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("open_nav").style.marginLeft = "250px";
+        };
+        
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("open_nav").style.marginLeft = "0";
+        };
+
+        $('#nav_open2').click(function(){
+            openNav2();
+            $('#nav_open2').hide();
+        });
+        $('#nav_close2').click(function(){
+            closeNav2();
+            $('#nav_open2').show();
+        });
+        // Le MENU
+        function openNav2() {
+            document.getElementById("mySidebar2").style.width = "250px";
+            document.getElementById("open_nav2").style.marginRight = "250px";
+        };
+        
+        function closeNav2() {
+            document.getElementById("mySidebar2").style.width = "0";
+            document.getElementById("open_nav2").style.marginLeft = "0";
+        };
+        // Fin Menu
     });

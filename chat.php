@@ -32,7 +32,8 @@
         <main id="chat">
             <section id="corps_discord">
                 <section id="channels">
-                    <div id="salon_plus">
+                    <div id="mySidebar" class="sidebar">
+                        <a href="javascript:void(0)" class="closebtn" id="nav_close">&times;</a>
                         <div id="titre_salon">
                         <?php if($admin == 1){ ?>
                             <h3 id="h3_salon">
@@ -52,6 +53,10 @@
                     </div>
                 </section>
 
+                <div id="open_nav">
+                    <button id="nav_open" class="openbtn"><img src="https://img.icons8.com/nolan/64/group-task.png"/></button>
+                </div>
+
                 <section id="messageries">
                     <p id="titre_salon">
                         Vous êtes sur le salon 
@@ -59,24 +64,31 @@
                             <?php include 'ressources/php/afficher_current_salon.php'; ?>
                         </span>
                     </p>
+
                     <article id="affichage_msg">
-                        <?php // include 'ressources/php/affichage_messages.php' ?>
                     </article>
                     <div id="form_new_msg">
                         <form method="POST">
                             <textarea name="new_message" id="new_message" cols="30" rows="1" placeholder="Ecrivez ici..."></textarea>
-                            <button type="submit" id="submit_new_message"><img src="https://img.icons8.com/material-outlined/24/000000/filled-sent.png"/></button>
+                            <img id="submit_new_message" src="https://img.icons8.com/nolan/25/telegram-app.png"/>
                         </form>
                     </div>
                     <p class="erreur"></p>
                 </section>
 
-                <section id="membres">
-                    <ul id="personnes">
-                        <h3> Membres du Salon </h3>
-                        <?php include 'ressources/php/affichage_users.php' ?>
-                    </ul>
-                </section>
+                <div id="mySidebar2" class="sidebar2">
+                    <a href="javascript:void(0)" class="closebtn2" id="nav_close2">&times;</a>
+                    <section id="membres">
+                        <ul id="personnes">
+                            <h3> Membres du Salon </h3>
+                            <?php include 'ressources/php/affichage_users.php' ?>
+                        </ul>
+                    </section>
+
+                    <div id="open_nav2">
+                        <button id="nav_open2" class="openbtn2"><img src="https://img.icons8.com/nolan/64/user-group-man-woman.png"/></button>
+                    </div>
+                </div>
             </section>
         </main>
 

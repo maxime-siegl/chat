@@ -5,7 +5,7 @@
 
     foreach($resultats as $user){
         // var_dump($user);
-        echo '<tr>';
+        echo '<tr id="ligne'.$user['id'].'">';
         echo '<td class="user_tab">'.$user['pseudo'].'</td>';
 
         if($user['administrateur_discord'] == 1){
@@ -13,7 +13,7 @@
         } else{
             $admin = "Utilisateur";
         }
-        echo '<td id="accessibilite">'.$admin.'</td>';
+        echo '<td id="accessibilite'.$user['id'].'">'.$admin.'</td>';
         echo '<td class="modif_supp">';
         echo '<img class="img_modif" id="'.$user['id'].'" src="https://img.icons8.com/nolan/35/toggle-on.png"/>';
         echo '<img class="img_supp" id="'.$user['id'].'" src="https://img.icons8.com/nolan/35/remove-user-male.png"/>';
