@@ -26,7 +26,6 @@
                 $pseudo = $utilisateur->getPseudo();
                 $id = $utilisateur->getId();
 
-                // var_dump($utilisateur);
         ?>
 
         <main id="chat">
@@ -59,17 +58,17 @@
 
                 <section id="messageries">
                     <p id="titre_salon">
-                        Vous êtes sur le salon 
+                        Vous êtes sur le salon
                         <span>
                             <?php include 'ressources/php/afficher_current_salon.php'; ?>
                         </span>
                     </p>
 
-                    <article id="affichage_msg">
+                    <article id="article_principal" class="affichage_msg">
                     </article>
                     <div id="form_new_msg">
                         <form method="POST">
-                            <textarea name="new_message" id="new_message" cols="30" rows="1" placeholder="Ecrivez ici..."></textarea>
+                            <textarea name="new_message" id="new_message" cols="30" row="1" placeholder="Ecrivez ici..."></textarea>
                             <img id="submit_new_message" src="https://img.icons8.com/nolan/25/telegram-app.png"/>
                         </form>
                     </div>

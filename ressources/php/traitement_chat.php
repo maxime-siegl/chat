@@ -8,11 +8,11 @@
         $utilisateur = unserialize($_SESSION["utilisateur"]);
         $id = $utilisateur->getId();
 
-        if(!isset($_GET['id_salon_current']) || empty($_GET['id_salon_current'])){
+        if(!isset($_POST['id_salon_current']) || empty($_POST['id_salon_current'])){
             $salon_id = 3;
-        } else if(isset($_GET['id_salon_current'])){
+        } else if(isset($_POST['id_salon_current'])){
             // recup en get le num du salon
-            $salon_id = $_GET['id_salon_current'];
+            $salon_id = $_POST['id_salon_current'];
         }
 
         $msg = $_POST['message'];

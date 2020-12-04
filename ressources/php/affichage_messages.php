@@ -15,7 +15,7 @@
         // recup les messages du channel
         $query = $bdd->prepare("SELECT *, messages.id as message_id FROM messages INNER JOIN utilisateurs on messages.id_creator = utilisateurs.id WHERE id_salon = ? ");
         $query->execute([$salon_id]);
-        $all_messages = $query->fetchAll(PDO::FETCH_ASSOC);
+        $all_messages = $query->fetchAll();
 
         $tab_resultat_message = [];
         array_push($tab_resultat_message, $all_messages);
